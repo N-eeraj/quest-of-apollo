@@ -1,9 +1,66 @@
 [
-  { "id": "1", "name": "Zeus", "domains": ["Sky", "Thunder", "King of Gods"] },
-  { "id": "2", "name": "Athena", "domains": ["Wisdom", "War Strategy", "Crafts"] },
-  { "id": "3", "name": "Ares", "domains": ["War", "Violence"] },
-  { "id": "4", "name": "Poseidon", "domains": ["Sea", "Earthquakes", "Horses"] },
-  { "id": "5", "name": "Hermes", "domains": ["Travel", "Commerce", "Thieves", "Messenger"] },
-  { "id": "6", "name": "Apollo", "domains": ["Sun", "Music", "Prophecy", "Healing"] },
-  { "id": "7", "name": "Hades", "domains": ["Underworld", "Death", "Wealth"] }
+  {
+    "id": "1",
+    "name": "Zeus",
+    "domains": [
+      "Sky",
+      "Thunder",
+      "King of Gods"
+    ]
+  },
+  {
+    "id": "2",
+    "name": "Athena",
+    "domains": [
+      "Wisdom",
+      "War Strategy",
+      "Crafts"
+    ]
+  },
+  {
+    "id": "3",
+    "name": "Ares",
+    "domains": [
+      "War",
+      "Violence"
+    ]
+  },
+  {
+    "id": "4",
+    "name": "Poseidon",
+    "domains": [
+      "Sea",
+      "Earthquakes",
+      "Horses"
+    ]
+  },
+  {
+    "id": "5",
+    "name": "Hermes",
+    "domains": [
+      "Travel",
+      "Commerce",
+      "Thieves",
+      "Messenger"
+    ]
+  },
+  {
+    "id": "6",
+    "name": "Apollo",
+    "domains": [
+      "Sun",
+      "Music",
+      "Prophecy",
+      "Healing"
+    ]
+  },
+  {
+    "id": "7",
+    "name": "Hades",
+    "domains": [
+      "Underworld",
+      "Death",
+      "Wealth"
+    ]
+  }
 ]
