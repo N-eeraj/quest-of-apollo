@@ -1,0 +1,8 @@
+[
+  { "id": "1", "name": "Hercules", "city": "Thebes" },
+  { "id": "2", "name": "Perseus", "city": "Argos" },
+  { "id": "3", "name": "Achilles", "city": "Phthia" },
+  { "id": "4", "name": "Jason", "city": "Iolcus" },
+  { "id": "5", "name": "Atalanta", "city": "Arcadia" },
+  { "id": "6", "name": "Orpheus", "city": "Thrace" }
+]

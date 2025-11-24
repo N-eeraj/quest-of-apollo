@@ -1,0 +1,12 @@
+[
+  { "id": "1", "title": "Twelve Labors of Hercules: Nemean Lion", "status": "COMPLETED", "heroId": "1" },
+  { "id": "2", "title": "Twelve Labors of Hercules: Lernaean Hydra", "status": "COMPLETED", "heroId": "1" },
+  { "id": "3", "title": "Slay Medusa", "status": "COMPLETED", "heroId": "2" },
+  { "id": "4", "title": "Rescue Andromeda", "status": "COMPLETED", "heroId": "2" },
+  { "id": "5", "title": "Fight in the Trojan War", "status": "IN_PROGRESS", "heroId": "3" },
+  { "id": "6", "title": "Search for the Golden Fleece", "status": "COMPLETED", "heroId": "4" },
+  { "id": "7", "title": "Calydonian Boar Hunt", "status": "COMPLETED", "heroId": "5" },
+  { "id": "8", "title": "Retrieve the Lyre from the Cave of Apollo", "status": "PLANNED", "heroId": "6" },
+  { "id": "9", "title": "Prophecy for the King of Thrace", "status": "IN_PROGRESS", "heroId": "6" },
+  { "id": "10", "title": "Journey to the Underworld to Save Eurydice", "status": "PLANNED", "heroId": "6" }
+]

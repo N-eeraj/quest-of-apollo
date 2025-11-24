@@ -1,0 +1,8 @@
+[
+  { "id": "1", "heroId": "1", "godId": "1", "relation": "Father" },
+  { "id": "2", "heroId": "2", "godId": "2", "relation": "Patron" },
+  { "id": "3", "heroId": "3", "godId": "4", "relation": "Protector" },
+  { "id": "4", "heroId": "4", "godId": "5", "relation": "Guide" },
+  { "id": "5", "heroId": "5", "godId": "2", "relation": "Patron" },
+  { "id": "6", "heroId": "6", "godId": "6", "relation": "Patron" }
+]

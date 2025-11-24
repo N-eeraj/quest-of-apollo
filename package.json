@@ -1,0 +1,17 @@
+{
+  "name": "quest-of-apollo",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "N-eeraj",
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "node --watch src/index.ts",
+    "start": "node src/index.ts"
+  },
+  "dependencies": {
+    "@apollo/server": "^5.2.0",
+    "graphql": "^16.12.0"
+  }
+}
