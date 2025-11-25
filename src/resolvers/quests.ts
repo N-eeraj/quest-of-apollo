@@ -1,8 +1,8 @@
 import fs from "fs";
 import {
-  HEROS,
+  HEROES,
   type Hero,
-} from "./heros.ts";
+} from "./heroes.ts";
 
 interface Quest {
   id: string;
@@ -18,7 +18,7 @@ export function quests() {
     .map(({ heroId, ...data }) => {
       return {
         ...data,
-        hero: HEROS.find(({ id }) => id === heroId),
+        hero: HEROES.find(({ id }) => id === heroId),
       };
     });
 }

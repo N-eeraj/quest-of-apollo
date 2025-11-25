@@ -1,6 +1,6 @@
 import {
-  heros,
-} from "./heros.ts";
+  heroes,
+} from "./heroes.ts";
 import {
   gods,
 } from "./gods.ts";
@@ -10,7 +10,7 @@ import {
 
 export default {
   Query: {
-    heros,
+    heroes,
     gods,
     quests,
   },
