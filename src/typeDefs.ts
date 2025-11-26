@@ -20,8 +20,11 @@ const RootQuery = `#graphql
 
   type Query {
     heroes: [Hero]
+    hero(id: ID!): Hero
     gods: [God]
+    god(id: ID!): God
     quests: [Quest]
+    quest(id: ID!): Quest
   }
 `;
 

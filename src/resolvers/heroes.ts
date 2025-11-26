@@ -11,3 +11,8 @@ export const HEROES: Array<Hero> = JSON.parse(fs.readFileSync("data/heroes.json"
 export function heroes() {
   return HEROES;
 }
+
+export function hero(_parent: unknown, { id }: Record<"id", string>) {
+  return HEROES
+    .find((hero) => hero.id === id);
+}

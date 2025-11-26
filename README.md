@@ -33,20 +33,20 @@ Data is stored in simple **JSON files**, making it easy to experiment without a 
 
 ### **Hero-focused Queries**
 - [x] `heroes`: Get all heroes  
-- [ ] `hero(id: ID!)`: Get a single hero by ID  
+- [x] `hero(id: ID!)`: Get a single hero by ID  
 - [ ] `questsByHero(heroId: ID!)`: Get all quests of a specific hero  
 - [ ] `godsOfHero(heroId: ID!)`: List all gods associated with a hero  
 - [ ] `heroWithQuests(id: ID!)`: Hero object including nested quests  
 
 ### **Quest-focused Queries**
 - [x] `quests`: Get all quests  
-- [ ] `quest(id: ID!)`: Get a single quest  
+- [x] `quest(id: ID!)`: Get a single quest  
 - [ ] `questsByStatus(status: String!)`: Filter quests by `PLANNED`, `IN_PROGRESS`, or `COMPLETED`  
 - [ ] `heroesWithQuest(title: String!)`: Find heroes involved in a quest by name  
 
 ### **God-focused Queries**
 - [x] `gods`: Get all gods  
-- [ ] `god(id: ID!)`: Get a single god  
+- [x] `god(id: ID!)`: Get a single god  
 - [ ] `heroesOfGod(godId: ID!)`: Get all heroes associated with a god  
 - [ ] `godDomains(godId: ID!)`: Get the list of domains for a god  
 

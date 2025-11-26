@@ -22,3 +22,8 @@ export function quests() {
       };
     });
 }
+
+export function quest(_parent: unknown, { id }: Record<"id", string>) {
+  return QUESTS
+    .find((quest) => quest.id === id);
+}
