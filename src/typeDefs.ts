@@ -1,8 +1,15 @@
 const RootQuery = `#graphql
+  type GodRelation {
+    god: God!
+    relation: String!
+  }
+
   type Hero {
     id: ID!
     name: String!
     city: String!
+    quests: [Quest!]
+    relations: [GodRelation!]
   }
 
   type God {

@@ -1,6 +1,8 @@
 import {
   heroes,
   hero,
+  questsByHero,
+  relationsByHero,
 } from "./heroes.ts";
 import {
   gods,
@@ -9,6 +11,7 @@ import {
 import {
   quests,
   quest,
+  heroByQuest,
 } from "./quests.ts";
 
 export default {
@@ -19,5 +22,12 @@ export default {
     god,
     quests,
     quest,
+  },
+  Hero: {
+    quests: questsByHero,
+    relations: relationsByHero,
+  },
+  Quest: {
+    hero: heroByQuest,
   },
 };
