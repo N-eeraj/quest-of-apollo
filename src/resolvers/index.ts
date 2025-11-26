@@ -7,6 +7,7 @@ import {
 import {
   gods,
   god,
+  relationsByGod,
 } from "./gods.ts";
 import {
   quests,
@@ -29,5 +30,8 @@ export default {
   },
   Quest: {
     hero: heroByQuest,
+  },
+  God: {
+    relations: relationsByGod,
   },
 };

@@ -1,4 +1,11 @@
 import fs from "fs";
+import {
+  hero,
+  type Hero,
+} from "./heroes.ts";
+import {
+  getRelationsByGod,
+} from "./relations.ts";
 
 export interface God {
   id: string;
@@ -19,3 +26,14 @@ export function god(
   return GODS
     .find((god) => god.id === id);
 }
+
+export function relationsByGod(god: God): Array<{ relation: string, hero: Hero }> {
+  return getRelationsByGod(god.id)
+    .map(({ relation, heroId }) => {
+      return {
+        relation,
+        hero: hero(undefined, { id: heroId })!,
+      }
+    });
+}
+

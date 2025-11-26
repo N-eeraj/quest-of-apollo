@@ -4,6 +4,11 @@ const RootQuery = `#graphql
     relation: String!
   }
 
+  type HeroRelation {
+    hero: Hero!
+    relation: String!
+  }
+
   type Hero {
     id: ID!
     name: String!
@@ -16,6 +21,7 @@ const RootQuery = `#graphql
     id: ID!
     name: String!
     domains: [String!]!
+    relations: [HeroRelation!]
   }
 
   type Quest {
