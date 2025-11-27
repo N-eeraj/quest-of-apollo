@@ -14,6 +14,10 @@ import {
   quest,
   heroByQuest,
 } from "./quests.ts";
+import {
+  relations,
+  relation,
+} from "./relations.ts"
 
 export default {
   Query: {
@@ -23,6 +27,8 @@ export default {
     god,
     quests,
     quest,
+    relations,
+    relation,
   },
   Hero: {
     quests: questsByHero,

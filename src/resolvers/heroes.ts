@@ -38,10 +38,4 @@ export function questsByHero(hero: Hero): Array<Quest> {
 
 export function relationsByHero(hero: Hero): Array<{ relation: string, god: God }> {
   return getRelationsByHero(hero.id)
-    .map(({ relation, godId }) => {
-      return {
-        relation,
-        god: god(undefined, { id: godId })!,
-      }
-    });
 }

@@ -31,6 +31,13 @@ const RootQuery = `#graphql
     hero: Hero!
   }
 
+  type Relation {
+    id: ID!
+    god: God!
+    hero: Hero!
+    relation: String!
+  }
+
   type Query {
     heroes: [Hero]
     hero(id: ID!): Hero
@@ -38,6 +45,8 @@ const RootQuery = `#graphql
     god(id: ID!): God
     quests: [Quest]
     quest(id: ID!): Quest
+    relations: [Relation]
+    relation(id: ID!): Relation
   }
 `;
 

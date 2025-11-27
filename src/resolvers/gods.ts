@@ -29,11 +29,5 @@ export function god(
 
 export function relationsByGod(god: God): Array<{ relation: string, hero: Hero }> {
   return getRelationsByGod(god.id)
-    .map(({ relation, heroId }) => {
-      return {
-        relation,
-        hero: hero(undefined, { id: heroId })!,
-      }
-    });
 }
 
