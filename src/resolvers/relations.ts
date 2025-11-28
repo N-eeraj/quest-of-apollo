@@ -1,10 +1,12 @@
 import fs from "fs";
 import {
   hero,
+  findHero,
   type Hero,
 } from "./heroes.ts";
 import {
   god,
+  findGod,
   type God,
 } from "./gods.ts";
 
@@ -23,6 +25,9 @@ export interface Relation {
 }
 
 export let RELATIONS: Array<RelationData> = JSON.parse(fs.readFileSync("data/relations.json", "utf-8"));
+let latestRelationId = Math.max(
+  ...RELATIONS.map((relation) => Number(relation.id))
+);
 
 function generateRelation(relation: RelationData): Relation {
   return {
@@ -84,6 +89,41 @@ export function deleteRelationsByHero(
   RELATIONS = RELATIONS.filter((quest) => quest.heroId !== heroId);
   return RELATIONS
     .map(generateRelation);
+}
+
+export function addRelation(
+  _parent: unknown,
+  { heroId, godId, relation }: Pick<RelationData, "heroId" | "godId" | "relation">
+): Relation {
+  // validate heroId
+  const hero = findHero(heroId);
+  if (!hero) {
+    throw new Error("Hero Not Found");
+  }
+  // validate godId
+  const god = findGod(godId);
+  if (!god) {
+    throw new Error("God Not Found");
+  }
+
+  // validate existing relation
+  const existingRelation = RELATIONS
+    .some((relation) => (
+      relation.heroId === heroId
+        && relation.godId === godId
+    ));
+  if (existingRelation) {
+    throw new Error("Relation for this hero-god exists");
+  }
+
+  const newRelation = {
+    id: String(++latestRelationId),
+    heroId,
+    godId,
+    relation
+  } satisfies RelationData;
+  RELATIONS.push(newRelation);
+  return generateRelation(newRelation);
 }
 
 export function deleteRelationsByGod(

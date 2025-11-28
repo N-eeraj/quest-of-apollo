@@ -51,23 +51,23 @@ Data is stored in simple **JSON files**, making it easy to experiment without a 
 ## **✅ Mutations**
 
 ### **Hero Mutations**
-- [ ] `addHero(name: String!, city: String!): Hero`
+- [x] `addHero(name: String!, city: String!): Hero`
 - [ ] `updateHero(id: ID!, name: String, city: String): Hero`
 - [x] `deleteHero(id: ID!): [Hero]`
 
 ### **Quest Mutations**
-- [ ] `addQuest(title: String!, status: String!, heroId: ID!): Quest`
+- [x] `addQuest(title: String!, status: String!, heroId: ID!): Quest`
 - [ ] `updateQuest(id: ID!, title: String, status: String, heroId: ID): Quest`
 - [x] `deleteQuest(id: ID!): Boolean`
 - [x] `deleteQuestsByHero(heroId: ID!): [Quest]`
 
 ### **God Mutations**
-- [ ] `addGod(name: String!, domains: [String!]!): God`
+- [x] `addGod(name: String!, domains: [String!]!): God`
 - [ ] `updateGod(id: ID!, name: String, domains: [String!]): God`
 - [x] `deleteGod(id: ID!): [God]`
 
 ### **Hero-God Relation Mutations**
-- [ ] `addRelation(heroId: ID!, godId: ID!, relation: String!): Relation`
+- [x] `addRelation(heroId: ID!, godId: ID!, relation: String!): Relation`
 - [ ] `updateRelation(id: ID!, relation: String!): Relation`
 - [x] `deleteRelation(id: ID!): [Relation]`
 - [x] `deleteRelationsByHero(heroId: ID!): [Relation]`

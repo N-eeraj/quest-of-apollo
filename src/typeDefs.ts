@@ -50,6 +50,10 @@ const RootQuery = `#graphql
   }
 
   type Mutation {
+    addHero(name: String!, city: String!): Hero
+    addQuest(title: String!, status: String!, heroId: ID!): Quest
+    addGod(name: String!, domains: [String!]!): God
+    addRelation(heroId: ID!, godId: ID!, relation: String!): Relation
     deleteHero(id: ID!): [Hero]
     deleteGod(id: ID!): [God]
     deleteQuest(id: ID!): [Quest]

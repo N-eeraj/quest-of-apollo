@@ -1,7 +1,7 @@
 import fs from "fs";
 import {
-  HEROES,
   type Hero,
+  findHero,
 } from "./heroes.ts";
 
 export interface Quest {
@@ -12,6 +12,9 @@ export interface Quest {
 }
 
 export let QUESTS: Array<Quest> = JSON.parse(fs.readFileSync("data/quests.json", "utf-8"));
+let latestQuestId = Math.max(
+  ...QUESTS.map((quest) => Number(quest.id))
+);
 
 export function quests(): Array<Quest> {
   return QUESTS;
@@ -26,8 +29,7 @@ export function quest(
 }
 
 export function heroByQuest(quest: Quest): Hero {
-  return HEROES
-    .find((hero) => hero.id === quest.heroId)!;
+  return findHero(quest.heroId)!
 }
 
 export function deleteQuest(
@@ -36,6 +38,34 @@ export function deleteQuest(
 ): Array<Quest> {
   QUESTS = QUESTS.filter((quest) => quest.id !== id);
   return QUESTS;
+}
+
+export function addQuest(
+  _parent: unknown,
+  { title, status, heroId }: Pick<Quest, "title" | "status" | "heroId">,
+): Quest {
+  // validate status
+  if (![
+    "COMPLETED",
+    "IN_PROGRESS",
+    "PLANNED",
+  ].includes(status)) {
+    throw new Error("Invalid Status");
+  }
+  // validate heroId
+  const hero = findHero(heroId);
+  if (!hero) {
+    throw new Error("Hero Not Found");
+  }
+
+  const newQuest = {
+    id: String(++latestQuestId),
+    title,
+    status: status as Quest["status"],
+    heroId,
+  } satisfies Quest;
+  QUESTS.push(newQuest);
+  return newQuest;
 }
 
 export function deleteQuestsByHero(

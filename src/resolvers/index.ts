@@ -3,24 +3,28 @@ import {
   hero,
   questsByHero,
   relationsByHero,
+  addHero,
   deleteHero,
 } from "./heroes.ts";
-import {
-  gods,
-  god,
-  relationsByGod,
-  deleteGod,
-} from "./gods.ts";
 import {
   quests,
   quest,
   heroByQuest,
+  addQuest,
   deleteQuest,
   deleteQuestsByHero,
 } from "./quests.ts";
 import {
+  gods,
+  god,
+  relationsByGod,
+  addGod,
+  deleteGod,
+} from "./gods.ts";
+import {
   relations,
   relation,
+  addRelation,
   deleteRelation,
   deleteRelationsByHero,
   deleteRelationsByGod,
@@ -30,10 +34,10 @@ export default {
   Query: {
     heroes,
     hero,
-    gods,
-    god,
     quests,
     quest,
+    gods,
+    god,
     relations,
     relation,
   },
@@ -48,9 +52,13 @@ export default {
     relations: relationsByGod,
   },
   Mutation: {
+    addHero,
+    addQuest,
+    addGod,
+    addRelation,
     deleteHero,
-    deleteGod,
     deleteQuest,
+    deleteGod,
     deleteRelation,
     deleteQuestsByHero,
     deleteRelationsByHero,

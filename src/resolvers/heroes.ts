@@ -19,6 +19,9 @@ export interface Hero {
 }
 
 export let HEROES: Array<Hero> = JSON.parse(fs.readFileSync("data/heroes.json", "utf-8"));
+let latestHeroId = Math.max(
+  ...HEROES.map((hero) => Number(hero.id))
+);
 
 export function heroes(): Array<Hero> {
   return HEROES;
@@ -41,6 +44,19 @@ export function relationsByHero(hero: Hero): Array<{ relation: string, god: God 
   return getRelationsByHero(hero.id);
 }
 
+export function addHero(
+  _parent: unknown,
+  { name, city }: Pick<Hero, "name" | "city">,
+): Hero {
+  const newHero = {
+    id: String(++latestHeroId),
+    name,
+    city,
+  } satisfies Hero;
+  HEROES.push(newHero);
+  return newHero;
+}
+
 export function deleteHero(
   _parent: unknown,
   { id }: Record<"id", Hero["id"]>,
@@ -49,4 +65,9 @@ export function deleteHero(
   deleteQuestsByHero(undefined, { heroId: id });
   deleteRelationsByHero(undefined, { heroId: id });
   return HEROES;
+}
+
+export function findHero(id: Hero["id"]): Hero | undefined {
+  return HEROES
+    .find((hero) => hero.id === id);
 }
