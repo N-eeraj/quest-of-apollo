@@ -42,6 +42,10 @@ Data is stored in simple **JSON files**, making it easy to experiment without a 
 ### **God-focused Queries**
 - [x] `gods`: Get all gods
 - [x] `god(id: ID!)`: Get a single god
+
+### **Relation-focused Queries**
+- [x] `relations`: Get all relations
+- [x] `relation(id: ID!)`: Get a single relation
 ---
 
 ## **✅ Mutations**
@@ -49,19 +53,22 @@ Data is stored in simple **JSON files**, making it easy to experiment without a 
 ### **Hero Mutations**
 - [ ] `addHero(name: String!, city: String!): Hero`
 - [ ] `updateHero(id: ID!, name: String, city: String): Hero`
-- [ ] `deleteHero(id: ID!): Boolean`
+- [x] `deleteHero(id: ID!): [Hero]`
 
 ### **Quest Mutations**
 - [ ] `addQuest(title: String!, status: String!, heroId: ID!): Quest`
-- [ ] `updateQuest(id: ID!, title: String, status: String): Quest`
-- [ ] `deleteQuest(id: ID!): Boolean`
+- [ ] `updateQuest(id: ID!, title: String, status: String, heroId: ID): Quest`
+- [x] `deleteQuest(id: ID!): Boolean`
+- [x] `deleteQuestsByHero(heroId: ID!): [Quest]`
 
 ### **God Mutations**
 - [ ] `addGod(name: String!, domains: [String!]!): God`
 - [ ] `updateGod(id: ID!, name: String, domains: [String!]): God`
-- [ ] `deleteGod(id: ID!): Boolean`
+- [x] `deleteGod(id: ID!): [God]`
 
 ### **Hero-God Relation Mutations**
-- [ ] `addHeroGodRelation(heroId: ID!, godId: ID!, relation: String!): HeroGodRelation`
-- [ ] `updateHeroGodRelation(id: ID!, relation: String!): HeroGodRelation`
-- [ ] `deleteHeroGodRelation(id: ID!): Boolean`
+- [ ] `addRelation(heroId: ID!, godId: ID!, relation: String!): Relation`
+- [ ] `updateRelation(id: ID!, relation: String!): Relation`
+- [x] `deleteRelation(id: ID!): [Relation]`
+- [x] `deleteRelationsByHero(heroId: ID!): [Relation]`
+- [x] `deleteRelationsByGod(godId: ID!): [Relation]`

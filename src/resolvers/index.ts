@@ -16,11 +16,14 @@ import {
   quest,
   heroByQuest,
   deleteQuest,
+  deleteQuestsByHero,
 } from "./quests.ts";
 import {
   relations,
   relation,
   deleteRelation,
+  deleteRelationsByHero,
+  deleteRelationsByGod,
 } from "./relations.ts"
 
 export default {
@@ -49,5 +52,8 @@ export default {
     deleteGod,
     deleteQuest,
     deleteRelation,
+    deleteQuestsByHero,
+    deleteRelationsByHero,
+    deleteRelationsByGod,
   }
 };

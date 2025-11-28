@@ -2,9 +2,11 @@ import fs from "fs";
 import {
   QUESTS,
   type Quest,
+  deleteQuestsByHero,
 } from "./quests.ts";
 import {
   getRelationsByHero,
+  deleteRelationsByHero,
 } from "./relations.ts";
 import {
   type God,
@@ -44,5 +46,7 @@ export function deleteHero(
   { id }: Record<"id", Hero["id"]>,
 ): Array<Hero> {
   HEROES = HEROES.filter((hero) => hero.id !== id);
+  deleteQuestsByHero(undefined, { heroId: id });
+  deleteRelationsByHero(undefined, { heroId: id });
   return HEROES;
 }

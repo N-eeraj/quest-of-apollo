@@ -17,18 +17,18 @@ const RootQuery = `#graphql
     relations: [GodRelation!]
   }
 
-  type God {
-    id: ID!
-    name: String!
-    domains: [String!]!
-    relations: [HeroRelation!]
-  }
-
   type Quest {
     id: ID!
     title: String!
     status: String!
     hero: Hero!
+  }
+
+  type God {
+    id: ID!
+    name: String!
+    domains: [String!]!
+    relations: [HeroRelation!]
   }
 
   type Relation {
@@ -41,10 +41,10 @@ const RootQuery = `#graphql
   type Query {
     heroes: [Hero]
     hero(id: ID!): Hero
-    gods: [God]
-    god(id: ID!): God
     quests: [Quest]
     quest(id: ID!): Quest
+    gods: [God]
+    god(id: ID!): God
     relations: [Relation]
     relation(id: ID!): Relation
   }
@@ -54,6 +54,9 @@ const RootQuery = `#graphql
     deleteGod(id: ID!): [God]
     deleteQuest(id: ID!): [Quest]
     deleteRelation(id: ID!): [Relation]
+    deleteQuestsByHero(heroId: ID!): [Quest]
+    deleteRelationsByHero(heroId: ID!): [Relation]
+    deleteRelationsByGod(godId: ID!): [Relation]
   }
 `;
 

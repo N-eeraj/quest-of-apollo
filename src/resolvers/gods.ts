@@ -4,6 +4,7 @@ import {
 } from "./heroes.ts";
 import {
   getRelationsByGod,
+  deleteRelationsByGod,
 } from "./relations.ts";
 
 export interface God {
@@ -35,5 +36,6 @@ export function deleteGod(
   { id }: Record<"id", God["id"]>
 ): Array<God> {
   GODS = GODS.filter((god) => god.id !== id);
+  deleteRelationsByGod(undefined, { godId: id });
   return GODS;
 }

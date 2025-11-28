@@ -37,3 +37,11 @@ export function deleteQuest(
   QUESTS = QUESTS.filter((quest) => quest.id !== id);
   return QUESTS;
 }
+
+export function deleteQuestsByHero(
+  _parent: unknown,
+  { heroId }: Record<"heroId", Hero["id"]>
+): Array<Quest> {
+  QUESTS = QUESTS.filter((quest) => quest.heroId !== heroId);
+  return QUESTS;
+}

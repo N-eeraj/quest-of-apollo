@@ -76,3 +76,21 @@ export function deleteRelation(
   return RELATIONS
     .map(generateRelation);
 }
+
+export function deleteRelationsByHero(
+  _parent: unknown,
+  { heroId }: Record<"heroId", Hero["id"]>
+): Array<Relation> {
+  RELATIONS = RELATIONS.filter((quest) => quest.heroId !== heroId);
+  return RELATIONS
+    .map(generateRelation);
+}
+
+export function deleteRelationsByGod(
+  _parent: unknown,
+  { godId }: Record<"godId", God["id"]>
+): Array<Relation> {
+  RELATIONS = RELATIONS.filter((quest) => quest.godId !== godId);
+  return RELATIONS
+    .map(generateRelation);
+}
