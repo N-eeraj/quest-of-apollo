@@ -7,7 +7,6 @@ import {
   getRelationsByHero,
 } from "./relations.ts";
 import {
-  god,
   type God,
 } from "./gods.ts";
 
@@ -17,7 +16,7 @@ export interface Hero {
   city: string;
 }
 
-export const HEROES: Array<Hero> = JSON.parse(fs.readFileSync("data/heroes.json", "utf-8"));
+export let HEROES: Array<Hero> = JSON.parse(fs.readFileSync("data/heroes.json", "utf-8"));
 
 export function heroes(): Array<Hero> {
   return HEROES;
@@ -25,7 +24,7 @@ export function heroes(): Array<Hero> {
 
 export function hero(
   _parent: unknown,
-  { id }: Record<"id", string>
+  { id }: Record<"id", Hero["id"]>,
 ): Hero | undefined {
   return HEROES
     .find((hero) => hero.id === id);
@@ -37,5 +36,13 @@ export function questsByHero(hero: Hero): Array<Quest> {
 }
 
 export function relationsByHero(hero: Hero): Array<{ relation: string, god: God }> {
-  return getRelationsByHero(hero.id)
+  return getRelationsByHero(hero.id);
+}
+
+export function deleteHero(
+  _parent: unknown,
+  { id }: Record<"id", Hero["id"]>,
+): Array<Hero> {
+  HEROES = HEROES.filter((hero) => hero.id !== id);
+  return HEROES;
 }

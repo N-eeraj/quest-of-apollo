@@ -3,20 +3,24 @@ import {
   hero,
   questsByHero,
   relationsByHero,
+  deleteHero,
 } from "./heroes.ts";
 import {
   gods,
   god,
   relationsByGod,
+  deleteGod,
 } from "./gods.ts";
 import {
   quests,
   quest,
   heroByQuest,
+  deleteQuest,
 } from "./quests.ts";
 import {
   relations,
   relation,
+  deleteRelation,
 } from "./relations.ts"
 
 export default {
@@ -40,4 +44,10 @@ export default {
   God: {
     relations: relationsByGod,
   },
+  Mutation: {
+    deleteHero,
+    deleteGod,
+    deleteQuest,
+    deleteRelation,
+  }
 };

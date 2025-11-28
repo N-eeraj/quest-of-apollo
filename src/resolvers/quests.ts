@@ -11,7 +11,7 @@ export interface Quest {
   heroId: Hero["id"];
 }
 
-export const QUESTS: Array<Quest> = JSON.parse(fs.readFileSync("data/quests.json", "utf-8"));
+export let QUESTS: Array<Quest> = JSON.parse(fs.readFileSync("data/quests.json", "utf-8"));
 
 export function quests(): Array<Quest> {
   return QUESTS;
@@ -19,7 +19,7 @@ export function quests(): Array<Quest> {
 
 export function quest(
   _parent: unknown,
-  { id }: Record<"id", string>
+  { id }: Record<"id", Quest["id"]>
 ): Quest | undefined {
   return QUESTS
     .find((quest) => quest.id === id);
@@ -28,4 +28,12 @@ export function quest(
 export function heroByQuest(quest: Quest): Hero {
   return HEROES
     .find((hero) => hero.id === quest.heroId)!;
+}
+
+export function deleteQuest(
+  _parent: unknown,
+  { id }: Record<"id", Quest["id"]>
+): Array<Quest> {
+  QUESTS = QUESTS.filter((quest) => quest.id !== id);
+  return QUESTS;
 }

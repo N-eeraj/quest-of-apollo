@@ -48,6 +48,13 @@ const RootQuery = `#graphql
     relations: [Relation]
     relation(id: ID!): Relation
   }
+
+  type Mutation {
+    deleteHero(id: ID!): [Hero]
+    deleteGod(id: ID!): [God]
+    deleteQuest(id: ID!): [Quest]
+    deleteRelation(id: ID!): [Relation]
+  }
 `;
 
 export default RootQuery;

@@ -22,7 +22,7 @@ export interface Relation {
   relation: string;
 }
 
-export const RELATIONS: Array<RelationData> = JSON.parse(fs.readFileSync("data/relations.json", "utf-8"));
+export let RELATIONS: Array<RelationData> = JSON.parse(fs.readFileSync("data/relations.json", "utf-8"));
 
 function generateRelation(relation: RelationData): Relation {
   return {
@@ -60,10 +60,19 @@ export function relations(): Array<Relation> {
 
 export function relation(
   _parent: unknown,
-  { id }: Record<"id", string>
+  { id }: Record<"id", Relation["id"]>
 ): Relation | undefined {
   return generateRelation(
     RELATIONS
       .find((relation) => relation.id === id)!
   );
+}
+
+export function deleteRelation(
+  _parent: unknown,
+  { id }: Record<"id", Relation["id"]>
+): Array<Relation> {
+  RELATIONS = RELATIONS.filter((relation) => relation.id !== id);
+  return RELATIONS
+    .map(generateRelation);
 }
