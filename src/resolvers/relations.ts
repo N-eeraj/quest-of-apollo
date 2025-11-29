@@ -82,29 +82,12 @@ export function deleteRelation(
     .map(generateRelation);
 }
 
-export function deleteRelationsByHero(
-  _parent: unknown,
-  { heroId }: Record<"heroId", Hero["id"]>
-): Array<Relation> {
-  RELATIONS = RELATIONS.filter((quest) => quest.heroId !== heroId);
-  return RELATIONS
-    .map(generateRelation);
-}
-
 export function addRelation(
   _parent: unknown,
   { heroId, godId, relation }: Pick<RelationData, "heroId" | "godId" | "relation">
 ): Relation {
-  // validate heroId
-  const hero = findHero(heroId);
-  if (!hero) {
-    throw new Error("Hero Not Found");
-  }
-  // validate godId
-  const god = findGod(godId);
-  if (!god) {
-    throw new Error("God Not Found");
-  }
+  validateHeroId(heroId);
+  validateGodId(godId);
 
   // validate existing relation
   const existingRelation = RELATIONS
@@ -124,6 +107,61 @@ export function addRelation(
   } satisfies RelationData;
   RELATIONS.push(newRelation);
   return generateRelation(newRelation);
+}
+
+export function updateRelation(
+  _parent: unknown,
+  { id, heroId, godId, relation: _relation }: Pick<Relation, "id"> & Partial<Pick<RelationData, "heroId" | "godId" | "relation">>,
+): Relation {
+  // validate id
+  let relation = RELATIONS
+    .find((relation) => relation.id === id);
+  if (!relation) {
+    throw new Error("Relation Not Found");
+  }
+  // validate heroId
+  if (heroId) {
+    validateHeroId(heroId);
+  }
+  // validate gofId
+  if (godId) {
+    validateGodId(godId);
+  }
+
+  if (heroId) {
+    relation.heroId = heroId;
+  }
+  if (godId) {
+    relation.godId = godId;
+  }
+  if (_relation) {
+    relation.relation = _relation;
+  }
+
+  return generateRelation(relation);
+}
+
+export function validateHeroId(heroId: RelationData["heroId"]) {
+  const hero = findHero(heroId);
+  if (!hero) {
+    throw new Error("Hero Not Found");
+  }
+}
+
+export function validateGodId(godId: RelationData["godId"]) {
+  const god = findGod(godId);
+  if (!god) {
+    throw new Error("God Not Found");
+  }
+}
+
+export function deleteRelationsByHero(
+  _parent: unknown,
+  { heroId }: Record<"heroId", Hero["id"]>
+): Array<Relation> {
+  RELATIONS = RELATIONS.filter((quest) => quest.heroId !== heroId);
+  return RELATIONS
+    .map(generateRelation);
 }
 
 export function deleteRelationsByGod(
