@@ -54,6 +54,8 @@ const RootQuery = `#graphql
     addQuest(title: String!, status: String!, heroId: ID!): Quest
     addGod(name: String!, domains: [String!]!): God
     addRelation(heroId: ID!, godId: ID!, relation: String!): Relation
+    updateHero(id: ID!, name: String, city: String): Hero
+    updateGod(id: ID!, name: String, domains: [String!]): God
     deleteHero(id: ID!): [Hero]
     deleteGod(id: ID!): [God]
     deleteQuest(id: ID!): [Quest]

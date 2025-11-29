@@ -4,6 +4,7 @@ import {
   questsByHero,
   relationsByHero,
   addHero,
+  updateHero,
   deleteHero,
 } from "./heroes.ts";
 import {
@@ -19,6 +20,7 @@ import {
   god,
   relationsByGod,
   addGod,
+  updateGod,
   deleteGod,
 } from "./gods.ts";
 import {
@@ -56,6 +58,8 @@ export default {
     addQuest,
     addGod,
     addRelation,
+    updateHero,
+    updateGod,
     deleteHero,
     deleteQuest,
     deleteGod,

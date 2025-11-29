@@ -10,7 +10,7 @@ import {
 export interface God {
   id: string;
   name: string;
-  domains: string;
+  domains: Array<string>;
 }
 
 export let GODS: Array<God> = JSON.parse(fs.readFileSync("data/gods.json", "utf-8"));
@@ -45,6 +45,26 @@ export function addGod(
   } satisfies God;
   GODS.push(newGod);
   return newGod;
+}
+
+export function updateGod(
+  _parent: unknown,
+  { id, name, domains }: Pick<God, "id"> & Partial<Pick<God, "name" | "domains">>,
+): God {
+  let god = findGod(id);
+  // validate id
+  if (!god) {
+    throw new Error("God Not Found");
+  }
+
+  if (name) {
+    god.name = name;
+  }
+  if (domains) {
+    god.domains = domains;
+  }
+
+  return god;
 }
 
 export function deleteGod(

@@ -57,6 +57,26 @@ export function addHero(
   return newHero;
 }
 
+export function updateHero(
+  _parent: unknown,
+  { id, name, city }: Pick<Hero, "id"> & Partial<Pick<Hero, "name" | "city">>,
+): Hero {
+  let hero = findHero(id);
+  // validate id
+  if (!hero) {
+    throw new Error("Hero Not Found");
+  }
+
+  if (name) {
+    hero.name = name;
+  }
+  if (city) {
+    hero.city = city;
+  }
+
+  return hero;
+}
+
 export function deleteHero(
   _parent: unknown,
   { id }: Record<"id", Hero["id"]>,

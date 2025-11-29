@@ -52,7 +52,7 @@ Data is stored in simple **JSON files**, making it easy to experiment without a 
 
 ### **Hero Mutations**
 - [x] `addHero(name: String!, city: String!): Hero`
-- [ ] `updateHero(id: ID!, name: String, city: String): Hero`
+- [x] `updateHero(id: ID!, name: String, city: String): Hero`
 - [x] `deleteHero(id: ID!): [Hero]`
 
 ### **Quest Mutations**
@@ -63,12 +63,12 @@ Data is stored in simple **JSON files**, making it easy to experiment without a 
 
 ### **God Mutations**
 - [x] `addGod(name: String!, domains: [String!]!): God`
-- [ ] `updateGod(id: ID!, name: String, domains: [String!]): God`
+- [x] `updateGod(id: ID!, name: String, domains: [String!]): God`
 - [x] `deleteGod(id: ID!): [God]`
 
 ### **Hero-God Relation Mutations**
 - [x] `addRelation(heroId: ID!, godId: ID!, relation: String!): Relation`
-- [ ] `updateRelation(id: ID!, relation: String!): Relation`
+- [ ] `updateRelation(id: ID!, heroId: ID, godId: ID, relation: String): Relation`
 - [x] `deleteRelation(id: ID!): [Relation]`
 - [x] `deleteRelationsByHero(heroId: ID!): [Relation]`
 - [x] `deleteRelationsByGod(godId: ID!): [Relation]`
