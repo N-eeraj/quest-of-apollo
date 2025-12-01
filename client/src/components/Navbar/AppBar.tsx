@@ -13,12 +13,12 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
+import {
+  type NavItem,
+} from "@/constants";
 
 interface Props {
-  navItems: Array<{
-    link: string
-    text: string
-  }>
+  navItems: Array<NavItem>
   onDrawerToggle: MouseEventHandler
 }
 
@@ -121,7 +121,7 @@ function AppTopBar({ navItems, onDrawerToggle }: Props) {
                   transformOrigin: "left",
                 },
               }}>
-                {item.text}
+                {item.title}
               </Button>
             </Link>
           ))}

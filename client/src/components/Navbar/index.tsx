@@ -2,25 +2,7 @@ import { useState } from "react";
 
 import AppTopBar from "@components/Navbar/AppBar";
 import SideDrawer from "@components/Navbar/Drawer";
-
-const navItems = [
-  {
-    link: "/heroes",
-    text: "Heroes",
-  },
-  {
-    link: "/quests",
-    text: "Quests",
-  },
-  {
-    link: "/gods",
-    text: "Gods",
-  },
-  {
-    link: "/relations",
-    text: "Relations",
-  },
-];
+import { navItems } from "@/constants";
 
 function Navbar() {
   const [drawerOpen, setDrawerOpen] = useState(false);

@@ -14,16 +14,16 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
+import {
+  type NavItem,
+} from "@/constants";
 
 const drawerWidth = 240;
 
 interface Props {
   open: boolean
   onDrawerToggle: MouseEventHandler
-  navItems: Array<{
-    link: string
-    text: string
-  }>
+  navItems: Array<NavItem>
 }
 
 function SideDrawer({ open, navItems, onDrawerToggle }: Props) {
@@ -111,7 +111,7 @@ function SideDrawer({ open, navItems, onDrawerToggle }: Props) {
               <ListItemButton
                 LinkComponent={Link}
                 to={item.link}>
-                <ListItemText primary={item.text} />
+                <ListItemText primary={item.title} />
               </ListItemButton>
             </ListItem>
           ))}
