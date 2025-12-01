@@ -1,5 +1,9 @@
 import { Outlet } from "react-router";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
+import {
+  ThemeProvider,
+  createTheme,
+} from "@mui/material/styles";
+import Box from "@mui/material/Box";
 import Navbar from "@components/Navbar";
 
 const darkTheme = createTheme({
@@ -18,9 +22,15 @@ function DefaultLayout() {
     <>
       <ThemeProvider theme={darkTheme}>
         <Navbar />
-        <main>
+        <Box
+          component="main"
+          paddingTop={{
+            xs: 8,
+            sm: 10,
+          }}
+          minHeight={"100vh"}>
           <Outlet />
-        </main>
+        </Box>
       </ThemeProvider>
     </>
   )
