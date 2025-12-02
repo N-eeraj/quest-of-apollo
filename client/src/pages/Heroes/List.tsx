@@ -50,6 +50,7 @@ function Heroes() {
               <Card
                 variant="outlined"
                 sx={({ palette, alpha }) => ({
+                  height: 1,
                   padding: 2,
                   borderColor: palette.primary.main,
                   transition: "200ms",
