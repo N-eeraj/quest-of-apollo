@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import Card from "@mui/material/Card";
+import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
@@ -44,20 +45,34 @@ function QuestCard({ id, title, status }: Pick<Quest, "id" | "title" | "status">
       <Card
         variant="outlined"
         sx={({ alpha, darken }) => ({
+          display: "flex",
+          flexDirection: "column",
           height: 1,
           padding: 2,
           borderColor: darken(questStatus.color, 0.2),
           transition: "200ms",
           ":hover": {
             backgroundColor: alpha(questStatus.color, 0.2),
+            "button": {
+              backgroundColor: questStatus.color,
+              color: "white",
+            },
           },
         })}>
-        <strong>
+        <Typography
+          component="strong"
+          fontSize={18}
+          display="block"
+          fontWeight={600}>
           {title}
-        </strong>
+        </Typography>
         <Tooltip title={questStatus.text}>
-          <IconButton sx={{
+          <IconButton
+            sx={{
               color: questStatus.color,
+              marginTop: "auto",
+              marginLeft: "auto",
+              transition: "200ms",
             }}>
             <questStatus.Icon />
           </IconButton>

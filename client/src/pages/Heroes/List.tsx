@@ -1,10 +1,9 @@
 import { gql } from "@apollo/client";
 import { useQuery } from "@apollo/client/react";
-import { Link } from "react-router";
 import Grid from "@mui/material/Grid";
 import LinearProgress from "@mui/material/LinearProgress";
-import Card from "@mui/material/Card";
 import type { Hero } from "@/types";
+import HeroCard from "@/components/Heros/List/Card";
 
 const GET_HEROES = gql`
   query Heroes {
@@ -30,9 +29,9 @@ function Heroes() {
         component="ul"
         spacing={2}
         padding={3}>
-        {data?.heroes.map(({ id, name, city }) => (
+        {data?.heroes.map((hero) => (
           <Grid
-            key={id}
+            key={hero.id}
             component="li"
             size={{
               xs: 12,
@@ -42,31 +41,7 @@ function Heroes() {
             sx={{
               listStyle: "none",
             }}>
-            <Link
-              to={`/heroes/${id}`}
-              style={{
-                textDecoration: "none",
-              }}>
-              <Card
-                variant="outlined"
-                sx={({ palette, alpha }) => ({
-                  height: 1,
-                  padding: 2,
-                  borderColor: palette.primary.main,
-                  transition: "200ms",
-                  ":hover": {
-                    backgroundColor: alpha(palette.secondary.main, 0.25),
-                  },
-                })}>
-                <strong>
-                  {name}
-                </strong>
-                &nbsp;of&nbsp;
-                <em>
-                  {city}
-                </em>
-              </Card>
-            </Link>
+            <HeroCard {...hero} />
           </Grid>
         ))}
       </Grid>
