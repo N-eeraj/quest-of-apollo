@@ -2,13 +2,13 @@ import { Link } from "react-router";
 import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
 import {
-  type God,
+  type Relation,
 } from "@/types"
 
-function GodCard({ id, name, domains }: Pick<God, "id" | "name" | "domains">) {
+function RelationCard({ id, hero, god, relation }: Relation) {
   return (
     <Link
-      to={`/gods/${id}`}
+      to={`/relations/${id}`}
       style={{
         textDecoration: "none",
       }}>
@@ -23,18 +23,26 @@ function GodCard({ id, name, domains }: Pick<God, "id" | "name" | "domains">) {
             backgroundColor: alpha(palette.secondary.main, 0.25),
           },
         })}>
-        <strong>
-          {name}
-        </strong>
-        &nbsp;god of&nbsp;
+        <Typography
+          component="strong"
+          color="secondary"
+          fontWeight={600}>
+          {god.name}
+        </Typography>
         <Typography
           component="em"
           color="textSecondary">
-          {domains.join(", ")}
+          &nbsp;{relation} of&nbsp;
+        </Typography>
+        <Typography
+          component="strong"
+          color="primary"
+          fontWeight={600}>
+          {hero.name}
         </Typography>
       </Card>
     </Link>
   )
 }
 
-export default GodCard
+export default RelationCard

@@ -5,7 +5,7 @@ import LinearProgress from "@mui/material/LinearProgress";
 import {
   type Quest,
 } from "@/types";
-import QuestCard from "@/components/Quests/List/Card";
+import QuestCard from "@components/Quests/List/Card";
 
 const GET_QUESTS = gql`
   query Quests {

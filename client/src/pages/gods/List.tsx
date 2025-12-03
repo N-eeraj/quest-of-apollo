@@ -3,7 +3,7 @@ import { useQuery } from "@apollo/client/react";
 import Grid from "@mui/material/Grid";
 import LinearProgress from "@mui/material/LinearProgress";
 import type { God } from "@/types";
-import GodCard from "@/components/Gods/List/Card";
+import GodCard from "@components/Gods/List/Card";
 
 const GET_GODS = gql`
   query Gods {
