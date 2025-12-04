@@ -9,7 +9,7 @@ import AssignmentRoundedIcon from "@mui/icons-material/AssignmentRounded";
 import {
   type Quest,
   Status,
-} from "@/types"
+} from "@/types";
 
 function QuestCard({ id, title, status }: Pick<Quest, "id" | "title" | "status">) {
 
@@ -34,7 +34,7 @@ function QuestCard({ id, title, status }: Pick<Quest, "id" | "title" | "status">
           color: "#e83",
         } as const;
     }
-  })()
+  })();
 
   return (
     <Link
@@ -82,4 +82,4 @@ function QuestCard({ id, title, status }: Pick<Quest, "id" | "title" | "status">
   )
 }
 
-export default QuestCard
+export default QuestCard;

@@ -3,7 +3,7 @@ import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
 import {
   type God,
-} from "@/types"
+} from "@/types";
 
 function GodCard({ id, name, domains }: Pick<God, "id" | "name" | "domains">) {
   return (
@@ -37,4 +37,4 @@ function GodCard({ id, name, domains }: Pick<God, "id" | "name" | "domains">) {
   )
 }
 
-export default GodCard
+export default GodCard;

@@ -26,27 +26,29 @@ function Quests() {
   return (
     <>
       {loading && <LinearProgress color="secondary" />}
-      <Grid
-        container
-        component="ul"
-        spacing={2}
-        padding={3}>
-        {data?.quests.map((quest) => (
-          <Grid
-            key={quest.id}
-            component="li"
-            size={{
-              xs: 12,
-              sm: 6,
-              md: 4,
-            }}
-            sx={{
-              listStyle: "none",
-            }}>
-            <QuestCard {...quest} />
-          </Grid>
-        ))}
-      </Grid>
+      {data && (
+        <Grid
+          container
+          component="ul"
+          spacing={2}
+          padding={3}>
+          {data.quests.map((quest) => (
+            <Grid
+              key={quest.id}
+              component="li"
+              size={{
+                xs: 12,
+                sm: 6,
+                md: 4,
+              }}
+              sx={{
+                listStyle: "none",
+              }}>
+              <QuestCard {...quest} />
+            </Grid>
+          ))}
+        </Grid>
+      )}
     </>
   )
 }

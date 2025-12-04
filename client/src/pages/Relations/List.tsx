@@ -29,27 +29,29 @@ function Relations() {
   return (
     <>
       {loading && <LinearProgress color="secondary" />}
-      <Grid
-        container
-        component="ul"
-        spacing={2}
-        padding={3}>
-        {data?.relations.map((relation) => (
-          <Grid
-            key={relation.id}
-            component="li"
-            size={{
-              xs: 12,
-              sm: 6,
-              md: 4,
-            }}
-            sx={{
-              listStyle: "none",
-            }}>
-            <RelationCard {...relation} />
-          </Grid>
-        ))}
-      </Grid>
+      {data && (
+        <Grid
+          container
+          component="ul"
+          spacing={2}
+          padding={3}>
+          {data.relations.map((relation) => (
+            <Grid
+              key={relation.id}
+              component="li"
+              size={{
+                xs: 12,
+                sm: 6,
+                md: 4,
+              }}
+              sx={{
+                listStyle: "none",
+              }}>
+              <RelationCard {...relation} />
+            </Grid>
+          ))}
+        </Grid>
+      )}
     </>
   )
 }

@@ -1,10 +1,12 @@
 const RootQuery = `#graphql
   type GodRelation {
+    id: ID!
     god: God!
     relation: String!
   }
 
   type HeroRelation {
+    id: ID!
     hero: Hero!
     relation: String!
   }

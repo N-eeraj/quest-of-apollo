@@ -3,7 +3,7 @@ import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
 import {
   type Relation,
-} from "@/types"
+} from "@/types";
 
 function RelationCard({ id, hero, god, relation }: Relation) {
   return (
@@ -45,4 +45,4 @@ function RelationCard({ id, hero, god, relation }: Relation) {
   )
 }
 
-export default RelationCard
+export default RelationCard;

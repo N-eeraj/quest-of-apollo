@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import Card from "@mui/material/Card";
 import {
   type Hero,
-} from "@/types"
+} from "@/types";
 
 function HeroCard({ id, name, city }: Pick<Hero, "id" | "name" | "city">) {
   return (
@@ -34,4 +34,4 @@ function HeroCard({ id, name, city }: Pick<Hero, "id" | "name" | "city">) {
   )
 }
 
-export default HeroCard
+export default HeroCard;

@@ -24,27 +24,29 @@ function Heroes() {
   return (
     <>
       {loading && <LinearProgress color="secondary" />}
-      <Grid
-        container
-        component="ul"
-        spacing={2}
-        padding={3}>
-        {data?.heroes.map((hero) => (
-          <Grid
-            key={hero.id}
-            component="li"
-            size={{
-              xs: 12,
-              sm: 6,
-              md: 4,
-            }}
-            sx={{
-              listStyle: "none",
-            }}>
-            <HeroCard {...hero} />
-          </Grid>
-        ))}
-      </Grid>
+      {data && (
+        <Grid
+          container
+          component="ul"
+          spacing={2}
+          padding={3}>
+          {data.heroes.map((hero) => (
+            <Grid
+              key={hero.id}
+              component="li"
+              size={{
+                xs: 12,
+                sm: 6,
+                md: 4,
+              }}
+              sx={{
+                listStyle: "none",
+              }}>
+              <HeroCard {...hero} />
+            </Grid>
+          ))}
+        </Grid>
+      )}
     </>
   )
 }

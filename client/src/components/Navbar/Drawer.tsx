@@ -121,4 +121,4 @@ function SideDrawer({ open, navItems, onDrawerToggle }: Props) {
   )
 }
 
-export default SideDrawer
+export default SideDrawer;

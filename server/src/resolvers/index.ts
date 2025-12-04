@@ -32,7 +32,7 @@ import {
   deleteRelation,
   deleteRelationsByHero,
   deleteRelationsByGod,
-} from "./relations.ts"
+} from "./relations.ts";
 
 export default {
   Query: {

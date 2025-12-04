@@ -131,4 +131,4 @@ function AppTopBar({ navItems, onDrawerToggle }: Props) {
   )
 }
 
-export default AppTopBar
+export default AppTopBar;
