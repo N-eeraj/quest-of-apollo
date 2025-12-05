@@ -1,9 +1,11 @@
 interface GodRelation {
+  id: string;
   god: God;
   relation: string;
 }
 
 interface HeroRelation {
+  id: string;
   hero: Hero;
   relation: string;
 }
