@@ -1,11 +1,13 @@
-import { useParams } from "react-router";
+import {
+  Link,
+  useParams,
+} from "react-router";
 import { gql } from "@apollo/client";
 import { useQuery } from "@apollo/client/react";
 import Stack from "@mui/material/Stack";
-import Grid from "@mui/material/Grid";
 import LinearProgress from "@mui/material/LinearProgress";
 import Typography from "@mui/material/Typography";
-import QuestCard from "@components/Quests/List/Card";
+import QuestsList from "@components/Quests/List";
 import type { Hero } from "@/types";
 
 const GET_HERO = gql`
@@ -22,6 +24,7 @@ const GET_HERO = gql`
       relations {
         id
         god {
+          id
           name
         }
         relation
@@ -95,7 +98,20 @@ function Hero() {
                 <Typography
                   key={id}
                   component="li">
-                  {relation}: {god.name}
+                  {relation}:&nbsp;
+                  <Typography
+                    component={Link}
+                    to={`/gods/${god.id}`}
+                    sx={{
+                      textDecoration: "none",
+                      fontWeight: 600,
+                      color: "inherit",
+                      ":hover": {
+                        textDecoration: "underline",
+                      },
+                    }}>
+                    {god.name}
+                  </Typography>
                 </Typography>
               ))}
             </Stack>
@@ -109,26 +125,7 @@ function Hero() {
               component="h3">
               Quests
             </Typography>
-            <Grid
-              container
-              component="ul"
-              spacing={2}>
-              {data.hero.quests.map((quest) => (
-                <Grid
-                  key={quest.id}
-                  component="li"
-                  size={{
-                    xs: 12,
-                    sm: 6,
-                    md: 4,
-                  }}
-                  sx={{
-                    listStyle: "none",
-                  }}>
-                  <QuestCard {...quest} />
-                </Grid>
-              ))}
-            </Grid>
+            <QuestsList quests={data.hero.quests} />
           </Stack>
         </Stack>
       )}
