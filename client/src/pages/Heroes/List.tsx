@@ -1,25 +1,13 @@
-import { gql } from "@apollo/client";
-import { useQuery } from "@apollo/client/react";
 import Grid from "@mui/material/Grid";
 import LinearProgress from "@mui/material/LinearProgress";
-import type { Hero } from "@/types";
-import HeroCard from "@components/Heros/List/Card";
-
-const GET_HEROES = gql`
-  query Heroes {
-    heroes {
-      id
-      name
-      city
-    }
-  }
-`;
+import HeroCard from "@components/Heroes/List/Card";
+import useHeroesList from "@hooks/heroes/useHeroesList";
 
 function Heroes() {
   const {
     loading,
     data,
-  } = useQuery<{heroes: Array<Pick<Hero, "id" | "name" | "city">> }>(GET_HEROES);
+  } = useHeroesList();
 
   return (
     <>

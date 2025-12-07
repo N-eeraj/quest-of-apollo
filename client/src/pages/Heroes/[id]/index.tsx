@@ -1,51 +1,17 @@
 import {
   Link,
-  useParams,
 } from "react-router";
-import { gql } from "@apollo/client";
-import { useQuery } from "@apollo/client/react";
 import Stack from "@mui/material/Stack";
 import LinearProgress from "@mui/material/LinearProgress";
 import Typography from "@mui/material/Typography";
 import QuestsList from "@components/Quests/List";
-import type { Hero } from "@/types";
-
-const GET_HERO = gql`
-  query Hero($id: ID!) {
-    hero(id: $id) {
-      id
-      name
-      city
-      quests {
-        id
-        title
-        status
-      }
-      relations {
-        id
-        god {
-          id
-          name
-        }
-        relation
-      }
-    }
-  }
-`;
+import useHero from "@hooks/heroes/useHero";
 
 function Hero() {
   const {
-    id,
-  } = useParams<{ id: string }>();
-
-  const {
     loading,
     data,
-  } = useQuery<{ hero: Hero }>(GET_HERO, {
-    variables: {
-      id,
-    },
-  });
+  } = useHero();
 
   return (
     <>

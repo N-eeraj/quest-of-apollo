@@ -1,30 +1,13 @@
-import { gql } from "@apollo/client";
-import { useQuery } from "@apollo/client/react";
 import Grid from "@mui/material/Grid";
 import LinearProgress from "@mui/material/LinearProgress";
-import type { Relation } from "@/types";
 import RelationCard from "@components/Relations/List/Card";
-
-const GET_RELATIONS = gql`
-  query Relations {
-    relations {
-      id
-      hero {
-        name
-      }
-      god {
-        name
-      }
-      relation
-    }
-  }
-`;
+import useRelationList from "@hooks/relations/useRelationList";
 
 function Relations() {
   const {
     loading,
     data,
-  } = useQuery<{relations: Array<Relation> }>(GET_RELATIONS);
+  } = useRelationList();
 
   return (
     <>
