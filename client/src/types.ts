@@ -1,3 +1,5 @@
+import React from "react";
+
 interface GodRelation {
   id: string;
   god: God;
@@ -44,3 +46,9 @@ export interface Relation {
   hero: Hero;
   relation: string;
 }
+
+export interface StatusDisplay {
+  text: string;
+  Icon: React.ElementType;
+  color: string;
+};

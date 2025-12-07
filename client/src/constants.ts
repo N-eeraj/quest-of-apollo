@@ -1,3 +1,11 @@
+import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
+import HikingRoundedIcon from "@mui/icons-material/HikingRounded";
+import AssignmentRoundedIcon from "@mui/icons-material/AssignmentRounded";
+import {
+  Status,
+  type StatusDisplay,
+} from "@/types";
+
 export const navItems = [
   {
     link: "/heroes",
@@ -42,3 +50,30 @@ export const navItems = [
 ];
 
 export type NavItem = typeof navItems[number]
+
+export const STATUS_DISPLAY_MAP: ReadonlyMap<Status, StatusDisplay> = new Map([
+  [
+    Status.COMPLETED,
+    {
+      text: "Completed",
+      Icon: CheckCircleRoundedIcon,
+      color: "#3a3",
+    } as const,
+  ],
+  [
+    Status.IN_PROGRESS,
+    {
+      text: "In Progress",
+      Icon: HikingRoundedIcon,
+      color: "#39f",
+    } as const,
+  ],
+  [
+    Status.PLANNED,
+    {
+      text: "Planned",
+      Icon: AssignmentRoundedIcon,
+      color: "#e83",
+    } as const,
+  ],
+] as const);
