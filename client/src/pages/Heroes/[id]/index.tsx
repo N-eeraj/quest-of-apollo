@@ -30,7 +30,8 @@ function Hero() {
           paddingY={1}>
           <Typography
             variant="h3"
-            component="h1">
+            component="h1"
+            fontWeight={600}>
             {data.hero.name}
           </Typography>
 

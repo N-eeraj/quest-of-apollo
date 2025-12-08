@@ -33,7 +33,8 @@ function Quest() {
             flexWrap="wrap">
             <Typography
               variant="h4"
-              component="h1">
+              component="h1"
+              fontWeight={700}>
               {data.quest.title}
             </Typography>
             {questStatus && (
