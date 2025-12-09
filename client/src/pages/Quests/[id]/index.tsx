@@ -1,8 +1,10 @@
-import { Link } from "react-router";
-import Stack from "@mui/material/Stack";
-import LinearProgress from "@mui/material/LinearProgress";
-import Typography from "@mui/material/Typography";
-import EditFab from "@components/Fab/Edit";
+import {
+  Link,
+  Stack,
+  LinearProgress,
+  Typography,
+  EditFab,
+} from "@barrels/view";
 import useQuest from "@hooks/quests/useQuest";
 
 function Quest() {

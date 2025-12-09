@@ -1,11 +1,11 @@
 import {
   Link,
-} from "react-router";
-import Stack from "@mui/material/Stack";
-import LinearProgress from "@mui/material/LinearProgress";
-import Typography from "@mui/material/Typography";
+  Stack,
+  LinearProgress,
+  Typography,
+  EditFab,
+} from "@barrels/view";
 import QuestsList from "@components/Quests/List";
-import EditFab from "@components/Fab/Edit";
 import useHero from "@hooks/heroes/useHero";
 
 function Hero() {

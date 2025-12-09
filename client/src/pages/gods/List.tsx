@@ -1,7 +1,9 @@
-import Grid from "@mui/material/Grid";
-import LinearProgress from "@mui/material/LinearProgress";
+import {
+  Grid,
+  LinearProgress,
+  CreateFab,
+} from "@barrels/list";
 import GodCard from "@components/Gods/List/Card";
-import CreateFab from "@components/Fab/Create";
 import useGodsList from "@hooks/gods/useGodsList";
 
 function Gods() {

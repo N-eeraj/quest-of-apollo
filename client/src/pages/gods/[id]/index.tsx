@@ -1,11 +1,11 @@
 import {
   Link,
-} from "react-router";
-import Stack from "@mui/material/Stack";
-import LinearProgress from "@mui/material/LinearProgress";
+  Stack,
+  LinearProgress,
+  Typography,
+  EditFab,
+} from "@barrels/view";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import EditFab from "@components/Fab/Edit";
 import useGod from "@hooks/gods/useGod";
 
 function God() {

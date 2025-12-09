@@ -1,7 +1,9 @@
-import Grid from "@mui/material/Grid";
-import LinearProgress from "@mui/material/LinearProgress";
+import {
+  Grid,
+  LinearProgress,
+  CreateFab,
+} from "@barrels/list";
 import HeroCard from "@components/Heroes/List/Card";
-import CreateFab from "@components/Fab/Create";
 import useHeroesList from "@hooks/heroes/useHeroesList";
 
 function Heroes() {

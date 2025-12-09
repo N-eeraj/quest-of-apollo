@@ -1,10 +1,10 @@
 import {
   Link,
-} from "react-router";
-import Stack from "@mui/material/Stack";
-import LinearProgress from "@mui/material/LinearProgress";
-import Typography from "@mui/material/Typography";
-import EditFab from "@components/Fab/Edit";
+  Stack,
+  LinearProgress,
+  Typography,
+  EditFab,
+} from "@barrels/view";
 import useRelation from "@hooks/relations/useRelation";
 
 function Relation() {
