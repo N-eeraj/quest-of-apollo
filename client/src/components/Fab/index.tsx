@@ -1,12 +1,15 @@
 import { Link } from "react-router";
 import Fab from "@mui/material/Fab";
-import AddIcon from "@mui/icons-material/Add";
+import type { PropsWithChildren } from "react";
+import type { SystemStyleObject } from "@mui/system";
+import type { Theme } from "@emotion/react";
 
-interface Props {
-  link: string
+interface Props extends PropsWithChildren {
+  link: string;
+  iconHoverSx?: SystemStyleObject<Theme>
 }
 
-function CreateFab({ link }: Props) {
+function LinkFab({ link, iconHoverSx = {}, children }: Props) {
   return (
     <Link to={link}>
       <Fab
@@ -23,16 +26,12 @@ function CreateFab({ link }: Props) {
             sm: 12,
             md: 16,
           },
-          ":hover > svg": {
-            transform: "rotate(90deg) scale(1.25)",
-          }
+          ":hover > svg": iconHoverSx,
         }}>
-        <AddIcon sx={{
-          transition: "transform 200ms",
-        }} />
+        {children}
       </Fab>
     </Link>
   )
 }
 
-export default CreateFab
+export default LinkFab;

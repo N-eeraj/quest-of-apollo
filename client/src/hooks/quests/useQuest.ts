@@ -34,6 +34,7 @@ export default function useQuest() {
   const questStatus = STATUS_DISPLAY_MAP.get(data?.quest.status!);
 
   return {
+    id,
     loading,
     data,
     questStatus,

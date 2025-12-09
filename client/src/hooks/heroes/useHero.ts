@@ -43,6 +43,7 @@ export default function useHero() {
   });
 
   return {
+    id,
     loading,
     data,
   }

@@ -20,7 +20,7 @@ const heroRoutes = [
         element: <Hero />,
       },
       {
-        path: ":id/update",
+        path: ":id/edit",
         element: <UpdateHero />,
       },
     ],

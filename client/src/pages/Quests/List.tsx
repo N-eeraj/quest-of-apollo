@@ -1,6 +1,6 @@
 import LinearProgress from "@mui/material/LinearProgress";
 import QuestsList from "@components/Quests/List";
-import CreateFab from "@components/Create/Fab";
+import CreateFab from "@components/Fab/Create";
 import useQuestsList from "@hooks/quests/useQuestsList";
 
 function Quests() {

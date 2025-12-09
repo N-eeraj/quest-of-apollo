@@ -5,10 +5,12 @@ import Stack from "@mui/material/Stack";
 import LinearProgress from "@mui/material/LinearProgress";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import EditFab from "@components/Fab/Edit";
 import useGod from "@hooks/gods/useGod";
 
 function God() {
   const {
+    id,
     loading,
     data,
   } = useGod();
@@ -99,6 +101,7 @@ function God() {
           </Stack>
         </Stack>
       )}
+      <EditFab link={`/gods/${id}/edit`} />
     </>
   )
 }

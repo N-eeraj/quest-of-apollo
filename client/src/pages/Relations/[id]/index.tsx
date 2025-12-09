@@ -4,10 +4,12 @@ import {
 import Stack from "@mui/material/Stack";
 import LinearProgress from "@mui/material/LinearProgress";
 import Typography from "@mui/material/Typography";
+import EditFab from "@components/Fab/Edit";
 import useRelation from "@hooks/relations/useRelation";
 
 function Relation() {
   const {
+    id,
     loading,
     data,
   } = useRelation();
@@ -87,6 +89,7 @@ function Relation() {
           </Typography>
         </Stack>
       )}
+      <EditFab link={`/relations/${id}/edit`} />
     </>
   )
 }

@@ -1,7 +1,7 @@
 import Grid from "@mui/material/Grid";
 import LinearProgress from "@mui/material/LinearProgress";
 import GodCard from "@components/Gods/List/Card";
-import CreateFab from "@components/Create/Fab";
+import CreateFab from "@components/Fab/Create";
 import useGodsList from "@hooks/gods/useGodsList";
 
 function Gods() {

@@ -20,7 +20,7 @@ const questRoutes = [
         element: <Quest />,
       },
       {
-        path: ":id/update",
+        path: ":id/edit",
         element: <UpdateQuest />,
       },
     ],

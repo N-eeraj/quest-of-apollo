@@ -37,6 +37,7 @@ export default function useRelation() {
   });
 
   return {
+    id,
     loading,
     data,
   }

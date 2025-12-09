@@ -20,7 +20,7 @@ const godRoutes = [
         element: <God />,
       },
       {
-        path: ":id/update",
+        path: ":id/edit",
         element: <UpdateGod />,
       },
     ],

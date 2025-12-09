@@ -2,10 +2,12 @@ import { Link } from "react-router";
 import Stack from "@mui/material/Stack";
 import LinearProgress from "@mui/material/LinearProgress";
 import Typography from "@mui/material/Typography";
+import EditFab from "@components/Fab/Edit";
 import useQuest from "@hooks/quests/useQuest";
 
 function Quest() {
   const {
+    id,
     loading,
     data,
     questStatus,
@@ -82,6 +84,7 @@ function Quest() {
           </Typography>
         </Stack>
       )}
+      <EditFab link={`/quests/${id}/edit`} />
     </>
   )
 }

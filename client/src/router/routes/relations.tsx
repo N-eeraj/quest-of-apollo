@@ -20,7 +20,7 @@ const relationRoutes = [
         element: <Relation />,
       },
       {
-        path: ":id/update",
+        path: ":id/edit",
         element: <UpdateRelation />,
       },
     ],

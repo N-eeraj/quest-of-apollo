@@ -5,10 +5,12 @@ import Stack from "@mui/material/Stack";
 import LinearProgress from "@mui/material/LinearProgress";
 import Typography from "@mui/material/Typography";
 import QuestsList from "@components/Quests/List";
+import EditFab from "@components/Fab/Edit";
 import useHero from "@hooks/heroes/useHero";
 
 function Hero() {
   const {
+    id,
     loading,
     data,
   } = useHero();
@@ -96,6 +98,7 @@ function Hero() {
           </Stack>
         </Stack>
       )}
+      <EditFab link={`/heroes/${id}/edit`} />
     </>
   )
 }

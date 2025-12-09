@@ -1,7 +1,7 @@
 import Grid from "@mui/material/Grid";
 import LinearProgress from "@mui/material/LinearProgress";
 import RelationCard from "@components/Relations/List/Card";
-import CreateFab from "@components/Create/Fab";
+import CreateFab from "@components/Fab/Create";
 import useRelationList from "@hooks/relations/useRelationList";
 
 function Relations() {

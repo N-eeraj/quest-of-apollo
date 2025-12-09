@@ -1,7 +1,7 @@
 import Grid from "@mui/material/Grid";
 import LinearProgress from "@mui/material/LinearProgress";
 import HeroCard from "@components/Heroes/List/Card";
-import CreateFab from "@components/Create/Fab";
+import CreateFab from "@components/Fab/Create";
 import useHeroesList from "@hooks/heroes/useHeroesList";
 
 function Heroes() {
