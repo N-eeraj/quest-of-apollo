@@ -1,6 +1,7 @@
 import Grid from "@mui/material/Grid";
 import LinearProgress from "@mui/material/LinearProgress";
 import HeroCard from "@components/Heroes/List/Card";
+import CreateFab from "@components/Create/Fab";
 import useHeroesList from "@hooks/heroes/useHeroesList";
 
 function Heroes() {
@@ -17,7 +18,12 @@ function Heroes() {
           container
           component="ul"
           spacing={2}
-          padding={3}>
+          padding={3}
+          paddingBottom={{
+            xs: 10,
+            sm: 12,
+            md: 14,
+          }}>
           {data.heroes.map((hero) => (
             <Grid
               key={hero.id}
@@ -35,6 +41,7 @@ function Heroes() {
           ))}
         </Grid>
       )}
+      <CreateFab link="/heroes/create" />
     </>
   )
 }

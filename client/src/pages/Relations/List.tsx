@@ -1,6 +1,7 @@
 import Grid from "@mui/material/Grid";
 import LinearProgress from "@mui/material/LinearProgress";
 import RelationCard from "@components/Relations/List/Card";
+import CreateFab from "@components/Create/Fab";
 import useRelationList from "@hooks/relations/useRelationList";
 
 function Relations() {
@@ -17,7 +18,12 @@ function Relations() {
           container
           component="ul"
           spacing={2}
-          padding={3}>
+          padding={3}
+          paddingBottom={{
+            xs: 10,
+            sm: 12,
+            md: 14,
+          }}>
           {data.relations.map((relation) => (
             <Grid
               key={relation.id}
@@ -35,6 +41,7 @@ function Relations() {
           ))}
         </Grid>
       )}
+      <CreateFab link="/relations/create" />
     </>
   )
 }

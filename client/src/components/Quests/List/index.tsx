@@ -3,14 +3,17 @@ import QuestCard from "@components/Quests/List/Card";
 import {
   type Quest,
 } from "@/types";
+import type { PropsOf } from "@emotion/react";
 
 export interface Props {
   quests: Array<Pick<Quest, "id" | "title" | "status">>
+  listProps?: Partial<PropsOf<typeof Grid<"ul">>>
 }
 
-function QuestsList({ quests }: Props) {
+function QuestsList({ quests, listProps }: Props) {
   return (
     <Grid
+      {...listProps}
       container
       component="ul"
       spacing={2}

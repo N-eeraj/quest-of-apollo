@@ -1,6 +1,7 @@
 import Grid from "@mui/material/Grid";
 import LinearProgress from "@mui/material/LinearProgress";
 import GodCard from "@components/Gods/List/Card";
+import CreateFab from "@components/Create/Fab";
 import useGodsList from "@hooks/gods/useGodsList";
 
 function Gods() {
@@ -17,7 +18,12 @@ function Gods() {
           container
           component="ul"
           spacing={2}
-          padding={3}>
+          padding={3}
+          paddingBottom={{
+            xs: 10,
+            sm: 12,
+            md: 14,
+          }}>
           {data.gods.map((god) => (
             <Grid
               key={god.id}
@@ -35,6 +41,7 @@ function Gods() {
           ))}
         </Grid>
       )}
+      <CreateFab link="/gods/create" />
     </>
   )
 }
