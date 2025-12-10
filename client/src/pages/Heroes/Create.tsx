@@ -1,6 +1,10 @@
+import HeroForm from "@components/Heroes/Form";
+
 function CreateHero() {
   return (
-    <div>CreateHero</div>
+    <>
+      <HeroForm />
+    </>
   )
 }
 
