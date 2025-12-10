@@ -38,7 +38,6 @@ export default function useGod() {
   });
 
   return {
-    id,
     loading,
     data,
   }
