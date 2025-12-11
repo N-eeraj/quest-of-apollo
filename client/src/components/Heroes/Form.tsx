@@ -1,38 +1,27 @@
 import {
-  useForm,
+  Grid,
+  TextField,
+  Button,
   type SubmitHandler,
-} from "react-hook-form"
-import Grid from "@mui/material/Grid";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
-import type { Hero } from "@/types";
+} from "@barrels/form/ui"
+import useHeroValidation, {
+  type DefaultValues,
+} from "@hooks/heroes/useHeroValidation";
 
-const heroFormSchema = z.object({
-  name: z.string().min(2, {
-    error: "Name is required",
-  }),
-  city: z.string().min(2, {
-    error: "City is required",
-  }),
-});
+interface Props {
+  defaultData?: DefaultValues;
+  onSubmit: SubmitHandler<{
+    name: string;
+    city: string;
+}>
+}
 
-type HeroFormData = z.infer<typeof heroFormSchema>;
-
-function HeroForm(heroData: Partial<Hero>) {
+function HeroForm({ defaultData, onSubmit }: Props) {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm<HeroFormData>({
-    resolver: zodResolver(heroFormSchema),
-    defaultValues: heroData,
-  });
-
-  const onSubmit: SubmitHandler<HeroFormData> = (data) => {
-    console.log(data);
-  };
+    errors,
+  } = useHeroValidation(defaultData);
 
   return (
     <Grid
