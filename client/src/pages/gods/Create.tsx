@@ -1,6 +1,15 @@
+import GodForm from "@components/Gods/Form";
+import useGodCreate from "@/hooks/gods/useGodCreate";
+
 function CreateGod() {
+  const {
+    onSubmit,
+  } = useGodCreate();
+
   return (
-    <div>CreateGod</div>
+    <>
+      <GodForm onSubmit={onSubmit} />
+    </>
   )
 }
 

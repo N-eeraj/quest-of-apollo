@@ -36,7 +36,7 @@ export interface Quest {
 export interface God {
   id: string;
   name: string;
-  domains: Array<String>;
+  domains: Array<string>;
   relations: Array<HeroRelation>;
 }
 

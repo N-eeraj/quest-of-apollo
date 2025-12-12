@@ -22,7 +22,7 @@ export default function useHeroCreate() {
     const result = await mutate({
       variables: data,
     });
-    navigate(`/heroes/${result.data.updateHero.id}`);
+    navigate(`/heroes/${result.data.addHero.id}`);
   };
 
   return {
