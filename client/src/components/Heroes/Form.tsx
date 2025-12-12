@@ -4,9 +4,9 @@ import {
   Button,
   type SubmitHandler,
 } from "@barrels/form/ui"
-import useHeroValidation, {
+import useHeroForm, {
   type DefaultValues,
-} from "@hooks/heroes/useHeroValidation";
+} from "@hooks/heroes/useHeroForm";
 
 interface Props {
   defaultData?: DefaultValues;
@@ -21,7 +21,7 @@ function HeroForm({ defaultData, onSubmit }: Props) {
     register,
     handleSubmit,
     errors,
-  } = useHeroValidation(defaultData);
+  } = useHeroForm(defaultData);
 
   return (
     <Grid

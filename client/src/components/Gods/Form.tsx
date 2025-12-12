@@ -4,12 +4,11 @@ import {
   Button,
   type SubmitHandler,
 } from "@barrels/form/ui"
-import useGodValidation, {
+import useGodForm, {
   type DefaultValues,
-} from "@hooks/gods/useGodValidation";
+} from "@hooks/gods/useGodForm";
 import AddRounded from "@mui/icons-material/AddRounded";
 import DeleteOutlineRounded from "@mui/icons-material/DeleteOutlineRounded";
-import { useState } from "react";
 
 interface Props {
   defaultData?: DefaultValues;
@@ -21,21 +20,10 @@ function GodForm({ defaultData, onSubmit }: Props) {
     register,
     handleSubmit,
     errors,
-    setValue,
-  } = useGodValidation(defaultData);
-
-  const [domains, setDomains] = useState([""])
-  const addDomain = () => {
-    setDomains(prev => ([
-      ...prev,
-      "",
-    ]))
-  }
-  const removeDomain = (index: number) => {
-    setDomains(prev => (
-      prev.filter((_, i) => i !== index)
-    ))
-  }
+    domains,
+    addDomain,
+    removeDomain,
+  } = useGodForm(defaultData);
 
   return (
     <Grid

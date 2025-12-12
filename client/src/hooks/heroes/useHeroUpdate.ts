@@ -4,7 +4,7 @@ import {
   useNavigate,
   type SubmitHandler,
 } from "@barrels/form/hook";
-import { type HeroFormData } from "@hooks/heroes/useHeroValidation";
+import { type HeroFormData } from "@hooks/heroes/useHeroForm";
 import type { Hero } from "@/types";
 
 const UPDATE_HERO = gql`

@@ -17,7 +17,7 @@ const heroFormSchema = z.object({
 export type HeroFormData = z.infer<typeof heroFormSchema>;
 export type DefaultValues = Pick<Hero, "name" | "city">;
 
-export default function useHeroValidation(defaultValues?: DefaultValues) {
+export default function useHeroForm(defaultValues?: DefaultValues) {
   const {
     register,
     handleSubmit,

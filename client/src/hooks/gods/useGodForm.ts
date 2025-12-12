@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   useForm,
 } from "react-hook-form"
@@ -21,10 +22,11 @@ const godFormSchema = z.object({
 export type GodFormData = z.infer<typeof godFormSchema>;
 export type DefaultValues = Pick<God, "name" | "domains">;
 
-export default function useGodValidation(defaultValues?: DefaultValues) {
+export default function useGodForm(defaultValues?: DefaultValues) {
   const {
     register,
     handleSubmit,
+    getValues,
     formState: { errors },
     setValue,
   } = useForm<GodFormData>({
@@ -32,10 +34,27 @@ export default function useGodValidation(defaultValues?: DefaultValues) {
     defaultValues,
   });
 
+
+  const [domains, setDomains] = useState([null]);
+  const addDomain = () => {
+    setDomains(prev => ([
+      ...prev,
+      null,
+    ]));
+  };
+  const removeDomain = (index: number) => {
+    setValue("domains", getValues("domains").filter((_, i) => index !== i));
+    setDomains(prev => (
+      prev.slice(0, -1)
+    ));
+  };
+
   return {
     register,
     handleSubmit,
     errors,
-    setValue,
+    domains,
+    addDomain,
+    removeDomain,
   }
 }

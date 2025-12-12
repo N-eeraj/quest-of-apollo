@@ -4,12 +4,12 @@ import {
   useNavigate,
   type SubmitHandler,
 } from "@barrels/form/hook";
-import { type GodFormData } from "@hooks/gods/useGodValidation";
+import { type GodFormData } from "@hooks/gods/useGodForm";
 
 const CREATE_HERO = gql`
   mutation Mutation($name: String!, $domains: [String!]!) {
     addGod(name: $name, domains: $domains) {
-      
+      id
     }
   }
 `;

@@ -4,7 +4,7 @@ import {
   useNavigate,
   type SubmitHandler,
 } from "@barrels/form/hook";
-import { type HeroFormData } from "@hooks/heroes/useHeroValidation";
+import { type HeroFormData } from "@hooks/heroes/useHeroForm";
 
 const CREATE_HERO = gql`
   mutation Mutation($name: String!, $city: String!) {
