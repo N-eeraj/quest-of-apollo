@@ -7,8 +7,8 @@ import {
 import { type QuestFormData } from "@hooks/quests/useQuestForm";
 
 const CREATE_HERO = gql`
-  mutation Mutation($name: String!, $domains: [String!]!) {
-    addQuest(name: $name, domains: $domains) {
+  mutation Mutation($title: String!, $status: String!, $heroId: ID!) {
+    addQuest(title: $title, status: $status, heroId: $heroId) {
       id
     }
   }

@@ -15,6 +15,7 @@ import useQuestForm, {
   type DefaultValues,
 } from "@hooks/quests/useQuestForm";
 import type { Quest } from "@/types";
+import { LinearProgress } from "@mui/material";
 
 interface Props {
   defaultData?: DefaultValues;
@@ -26,6 +27,8 @@ function QuestForm({ defaultData, onSubmit }: Props) {
     register,
     handleSubmit,
     errors,
+    loadingHeroes,
+    heroes,
   } = useQuestForm(defaultData);
 
   return (
@@ -101,6 +104,48 @@ function QuestForm({ defaultData, onSubmit }: Props) {
           {errors.status?.message && (
             <FormHelperText error>
               {errors.status.message}
+            </FormHelperText>
+          )}
+        </FormControl>
+      </Grid>
+      <Grid
+        size={{
+          xs: 12,
+          sm: 6,
+        }}
+        paddingX={{
+          sm: 1,
+        }}>
+        <FormControl fullWidth>
+          <InputLabel size="small">
+            Select hero
+          </InputLabel>
+          <Select
+            label="Select hero"
+            disabled={loadingHeroes}
+            error={!!errors.heroId}
+            fullWidth
+            size="small"
+            {...register("heroId")}
+          >
+            {heroes?.map(({ id, name }) => (
+              <MenuItem
+                key={id}
+                value={id}
+                sx={{
+                  display: "flex",
+                  columnGap: 0.5,
+                }}>
+                {name}
+              </MenuItem>
+            ))}
+          </Select>
+          {loadingHeroes && (
+            <LinearProgress />
+          )}
+          {errors.heroId?.message && (
+            <FormHelperText error>
+              {errors.heroId.message}
             </FormHelperText>
           )}
         </FormControl>

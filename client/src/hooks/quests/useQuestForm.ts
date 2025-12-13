@@ -1,3 +1,5 @@
+import { gql } from "@apollo/client";
+import { useQuery } from "@apollo/client/react";
 import {
   useForm,
 } from "react-hook-form"
@@ -6,6 +8,7 @@ import * as z from "zod";
 import {
   Status,
   type Quest,
+  type Hero,
 } from "@/types";
 import { STATUS_DISPLAY_MAP } from "@/constants";
 
@@ -16,13 +19,22 @@ const questFormSchema = z.object({
   status: z.enum(Status, {
     error: "Invalid Status"
   }),
-  hero: z.string({
+  heroId: z.string().min(1, {
     error: "Hero is required"
   }),
 });
 
+const GET_HERO_LIST = gql`
+  query Heroes {
+    heroes {
+      id
+      name
+    }
+  }
+`;
+
 export type QuestFormData = z.infer<typeof questFormSchema>;
-export type DefaultValues = Pick<Quest, "title" | "status" > | { hero: Quest["hero"]["id"] };
+export type DefaultValues = Pick<Quest, "title" | "status" > | { heroId: Quest["hero"]["id"] };
 
 export const statusItems = Object.values(Status)
   .map(status => ({
@@ -31,6 +43,11 @@ export const statusItems = Object.values(Status)
   }))
 
 export default function useQuestForm(defaultValues?: DefaultValues) {
+  const {
+    loading: loadingHeroes,
+    data: heroes,
+  } = useQuery<{heroes: Array<Pick<Hero, "id" | "name">> }>(GET_HERO_LIST);
+
   const {
     register,
     handleSubmit,
@@ -44,5 +61,7 @@ export default function useQuestForm(defaultValues?: DefaultValues) {
     register,
     handleSubmit,
     errors,
+    loadingHeroes,
+    heroes: heroes?.heroes ?? [],
   }
 }
