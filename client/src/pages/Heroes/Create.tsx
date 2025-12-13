@@ -1,5 +1,5 @@
 import HeroForm from "@components/Heroes/Form";
-import useHeroCreate from "@/hooks/heroes/useHeroCreate";
+import useHeroCreate from "@hooks/heroes/useHeroCreate";
 
 function CreateHero() {
   const {

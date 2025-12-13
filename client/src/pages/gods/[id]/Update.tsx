@@ -1,7 +1,7 @@
 import LinearProgress from "@mui/material/LinearProgress";
 import GodForm from "@components/Gods/Form";
 import useGod from "@hooks/gods/useGod";
-import useGodUpdate from "@/hooks/gods/useGodUpdate";
+import useGodUpdate from "@hooks/gods/useGodUpdate";
 
 function UpdateGod() {
   const {

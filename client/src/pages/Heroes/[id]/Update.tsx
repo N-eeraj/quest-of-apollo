@@ -1,7 +1,7 @@
 import LinearProgress from "@mui/material/LinearProgress";
 import HeroForm from "@components/Heroes/Form";
 import useHero from "@hooks/heroes/useHero";
-import useHeroUpdate from "@/hooks/heroes/useHeroUpdate";
+import useHeroUpdate from "@hooks/heroes/useHeroUpdate";
 
 function UpdateHero() {
   const {

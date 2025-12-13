@@ -1,5 +1,5 @@
 import GodForm from "@components/Gods/Form";
-import useGodCreate from "@/hooks/gods/useGodCreate";
+import useGodCreate from "@hooks/gods/useGodCreate";
 
 function CreateGod() {
   const {
