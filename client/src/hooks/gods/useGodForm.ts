@@ -34,8 +34,7 @@ export default function useGodForm(defaultValues?: DefaultValues) {
     defaultValues,
   });
 
-
-  const [domains, setDomains] = useState([null]);
+  const [domains, setDomains] = useState(Array.from({ length: defaultValues?.domains.length ?? 1 }));
   const addDomain = () => {
     setDomains(prev => ([
       ...prev,

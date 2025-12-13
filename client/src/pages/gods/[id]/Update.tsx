@@ -1,6 +1,27 @@
+import LinearProgress from "@mui/material/LinearProgress";
+import GodForm from "@components/Gods/Form";
+import useGod from "@hooks/gods/useGod";
+import useGodUpdate from "@/hooks/gods/useGodUpdate";
+
 function UpdateGod() {
+  const {
+    loading,
+    data,
+  } = useGod();
+
+  const {
+    onSubmit,
+  } = useGodUpdate();
+
   return (
-    <div>UpdateGod</div>
+    <>
+      {loading && <LinearProgress color="secondary" />}
+      {data && (
+        <GodForm
+          defaultData={data.god}
+          onSubmit={formData => onSubmit({ ...formData, id: data.god.id })} />
+      )}
+    </>
   )
 }
 
