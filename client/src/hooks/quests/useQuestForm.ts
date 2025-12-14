@@ -19,7 +19,7 @@ const questFormSchema = z.object({
   status: z.enum(Status, {
     error: "Invalid Status"
   }),
-  heroId: z.string().min(1, {
+  heroId: z.string({
     error: "Hero is required"
   }),
 });
@@ -38,7 +38,7 @@ export type DefaultValues = Pick<Quest, "title" | "status" > & { heroId: Quest["
 
 export const statusItems = Object.values(Status)
   .map(status => ({
-    ...STATUS_DISPLAY_MAP.get(status),
+    ...STATUS_DISPLAY_MAP.get(status)!,
     value: status,
   }))
 
@@ -64,6 +64,10 @@ export default function useQuestForm(defaultValues?: DefaultValues) {
     errors,
     control,
     loadingHeroes,
-    heroes: heroes?.heroes ?? [],
+    heroes: (heroes?.heroes ?? [])
+      .map(({ id, name }) => ({
+        value: id,
+        text: name,
+      })),
   }
 }

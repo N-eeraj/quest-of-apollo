@@ -1,5 +1,5 @@
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
-import LinkFab from "@components/Fab";
+import LinkFab from "@components/ui/Fab";
 
 interface Props {
   link: string;
