@@ -21,5 +21,5 @@ export default function useQuestsList() {
   return {
     loading,
     data,
-  }
+  };
 }

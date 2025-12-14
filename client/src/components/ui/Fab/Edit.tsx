@@ -1,9 +1,9 @@
 import EditRoundedIcon from "@mui/icons-material/EditRounded";
 import LinkFab from "@components/ui/Fab";
 
-interface Props {
+export interface Props {
   link: string;
-}
+};
 
 function EditFab({ link }: Props) {
   return (

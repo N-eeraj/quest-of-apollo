@@ -69,5 +69,5 @@ export default function useQuestForm(defaultValues?: DefaultValues) {
         value: id,
         text: name,
       })),
-  }
+  };
 }

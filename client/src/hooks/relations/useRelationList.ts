@@ -26,5 +26,5 @@ export default function useRelationList() {
   return {
     loading,
     data,
-  }
+  };
 }

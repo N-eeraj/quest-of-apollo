@@ -21,5 +21,5 @@ export default function useHeroesList() {
   return {
     loading,
     data,
-  }
+  };
 }

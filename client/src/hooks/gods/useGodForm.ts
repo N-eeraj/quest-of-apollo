@@ -34,18 +34,13 @@ export default function useGodForm(defaultValues?: DefaultValues) {
     defaultValues,
   });
 
-  const [domains, setDomains] = useState(Array.from({ length: defaultValues?.domains.length ?? 1 }));
+  const [domains, setDomains] = useState(1);
   const addDomain = () => {
-    setDomains(prev => ([
-      ...prev,
-      null,
-    ]));
+    setDomains(prev => prev + 1);
   };
   const removeDomain = (index: number) => {
     setValue("domains", getValues("domains").filter((_, i) => index !== i));
-    setDomains(prev => (
-      prev.slice(0, -1)
-    ));
+    setDomains(prev => prev - 1);
   };
 
   return {
@@ -55,5 +50,5 @@ export default function useGodForm(defaultValues?: DefaultValues) {
     domains,
     addDomain,
     removeDomain,
-  }
+  };
 }

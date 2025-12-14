@@ -28,7 +28,7 @@ function UpdateQuest() {
         status,
         heroId: hero.id,
       }
-    }
+    };
   }
 
   return (
@@ -41,7 +41,7 @@ function UpdateQuest() {
           onSubmit={formData => onSubmit({ ...formData, id: data.quest.id })} />
       )}
     </>
-  )
+  );
 }
 
 export default UpdateQuest;

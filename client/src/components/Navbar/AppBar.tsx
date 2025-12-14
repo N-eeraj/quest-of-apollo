@@ -17,10 +17,10 @@ import {
   type NavItem,
 } from "@/constants";
 
-interface Props {
+export interface Props {
   navItems: Array<NavItem>
   onDrawerToggle: MouseEventHandler
-}
+};
 
 function AppTopBar({ navItems, onDrawerToggle }: Props) {
   const location = useLocation()

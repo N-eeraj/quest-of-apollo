@@ -31,5 +31,5 @@ export default function useHeroForm(defaultValues?: DefaultValues) {
     register,
     handleSubmit,
     errors,
-  }
+  };
 }

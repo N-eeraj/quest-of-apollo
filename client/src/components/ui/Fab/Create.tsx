@@ -1,9 +1,9 @@
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import LinkFab from "@components/ui/Fab";
 
-interface Props {
+export interface Props {
   link: string;
-}
+};
 
 function CreateFab({ link }: Props) {
   return (

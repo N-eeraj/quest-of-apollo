@@ -6,9 +6,9 @@ import {
 import type { PropsOf } from "@emotion/react";
 
 export interface Props {
-  quests: Array<Pick<Quest, "id" | "title" | "status">>
-  listProps?: Partial<PropsOf<typeof Grid<"ul">>>
-}
+  quests: Array<Pick<Quest, "id" | "title" | "status">>;
+  listProps?: Partial<PropsOf<typeof Grid<"ul">>>;
+};
 
 function QuestsList({ quests, listProps }: Props) {
   return (

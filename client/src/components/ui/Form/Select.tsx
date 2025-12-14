@@ -19,7 +19,7 @@ interface Option {
   text: string;
 }
 
-interface Props {
+export interface Props {
   control: Control<any>;
   name: string;
   label: string;
@@ -28,7 +28,7 @@ interface Props {
   errors?: string;
   Item?: FC<Option & any>;
   renderValue?: SelectProps["renderValue"];
-}
+};
 
 function FormSelect({ control, name, label, loading, options, errors, Item, renderValue }: Props) {
   return (

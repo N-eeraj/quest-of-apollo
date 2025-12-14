@@ -3,9 +3,9 @@ import {
   Button,
 } from "@barrels/form/ui";
 
-interface Props {
+export interface Props {
   isSubmitting?: boolean;
-}
+};
 
 function SubmitButton({  isSubmitting }: Props) {
   return (

@@ -40,5 +40,5 @@ export default function useGod() {
   return {
     loading,
     data,
-  }
+  };
 }

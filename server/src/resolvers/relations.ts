@@ -35,7 +35,7 @@ function generateRelation(relation: RelationData): Relation {
     relation: relation.relation,
     hero: hero(undefined, { id: relation.heroId })!,
     god: god(undefined, { id: relation.godId })!,
-  }
+  };
 }
 
 export function getRelationsByHero(heroId: Hero["id"]): Array<Relation> {

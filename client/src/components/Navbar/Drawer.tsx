@@ -20,14 +20,14 @@ import {
 
 const drawerWidth = 240;
 
-interface Props {
-  open: boolean
-  onDrawerToggle: MouseEventHandler
-  navItems: Array<NavItem>
-}
+export interface Props {
+  open: boolean;
+  onDrawerToggle: MouseEventHandler;
+  navItems: Array<NavItem>;
+};
 
 function SideDrawer({ open, navItems, onDrawerToggle }: Props) {
-  const location = useLocation()
+  const location = useLocation();
 
   return (
     <Drawer
@@ -109,7 +109,7 @@ function SideDrawer({ open, navItems, onDrawerToggle }: Props) {
                 },
               })}>
               <ListItemButton
-                LinkComponent={Link}
+                component={Link}
                 to={item.link}>
                 <ListItemText primary={item.title} />
               </ListItemButton>

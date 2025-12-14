@@ -8,6 +8,7 @@ export { default as InputLabel } from "@mui/material/InputLabel";
 export { default as FormHelperText } from "@mui/material/FormHelperText";
 export { default as LinearProgress } from "@mui/material/LinearProgress";
 export { default as FormTextField } from "@components/ui/Form/TextField";
+export { default as FormContainer } from "@components/ui/Form/Container";
 export { default as FormSelect } from "@components/ui/Form/Select";
 export { default as SubmitButton } from "@components/ui/Form/SubmitButton";
 export {

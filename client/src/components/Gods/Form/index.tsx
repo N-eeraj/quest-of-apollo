@@ -4,25 +4,26 @@ import {
   SubmitButton,
   type SubmitHandler,
 } from "@barrels/form/ui"
-import useHeroForm, {
+import Domains from "@components/Gods/Form/Domains";
+import useGodForm, {
   type DefaultValues,
-} from "@hooks/heroes/useHeroForm";
+} from "@hooks/gods/useGodForm";
 
 export interface Props {
   defaultData?: DefaultValues;
   isSubmitting?: boolean;
-  onSubmit: SubmitHandler<{
-    name: string;
-    city: string;
-  }>;
+  onSubmit: SubmitHandler<DefaultValues>;
 };
 
-function HeroForm({ defaultData, isSubmitting, onSubmit }: Props) {
+function GodForm({ defaultData, isSubmitting, onSubmit }: Props) {
   const {
     register,
     handleSubmit,
     errors,
-  } = useHeroForm(defaultData);
+    domains,
+    addDomain,
+    removeDomain,
+  } = useGodForm(defaultData);
 
   return (
     <FormContainer onSubmit={handleSubmit(onSubmit)}>
@@ -32,15 +33,16 @@ function HeroForm({ defaultData, isSubmitting, onSubmit }: Props) {
         helperText={errors.name?.message}
         error={!!errors.name} />
 
-      <FormTextField
-        {...register("city")}
-        placeholder="Enter city"
-        helperText={errors.city?.message}
-        error={!!errors.city} />
+      <Domains
+        domains={domains}
+        register={register}
+        errors={errors.domains}
+        onAddDomain={addDomain}
+        onRemoveDomain={removeDomain} />
 
       <SubmitButton isSubmitting={isSubmitting} />
     </FormContainer>
   )
 }
 
-export default HeroForm;
+export default GodForm;

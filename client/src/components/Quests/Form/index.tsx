@@ -1,5 +1,5 @@
 import {
-  Grid,
+  FormContainer,
   FormTextField,
   FormSelect,
   SubmitButton,
@@ -13,11 +13,11 @@ import useQuestForm, {
 } from "@hooks/quests/useQuestForm";
 import type { Quest } from "@/types";
 
-interface Props {
+export interface Props {
   defaultData?: DefaultValues;
   isSubmitting?: boolean;
   onSubmit: SubmitHandler<DefaultValues>;
-}
+};
 
 function QuestForm({ defaultData, isSubmitting, onSubmit }: Props) {
   const {
@@ -30,17 +30,7 @@ function QuestForm({ defaultData, isSubmitting, onSubmit }: Props) {
   } = useQuestForm(defaultData);
 
   return (
-    <Grid
-      container
-      component="form"
-      rowGap={{
-        xs: 2,
-        sm: 3,
-      }}
-      maxWidth={920}
-      margin="auto"
-      padding={2}
-      onSubmit={handleSubmit(onSubmit)}>
+    <FormContainer onSubmit={handleSubmit(onSubmit)}>
       <FormTextField
         {...register("title")}
         placeholder="Enter title"
@@ -65,7 +55,7 @@ function QuestForm({ defaultData, isSubmitting, onSubmit }: Props) {
         errors={errors.heroId?.message} />
 
       <SubmitButton isSubmitting={isSubmitting} />
-    </Grid>
+    </FormContainer>
   )
 }
 
