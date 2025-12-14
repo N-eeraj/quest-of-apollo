@@ -1,4 +1,5 @@
 import {
+  useState,
   gql,
   useMutation,
   useNavigate,
@@ -15,17 +16,21 @@ const CREATE_HERO = gql`
 `;
 
 export default function useGodCreate() {
+  const [loading, setLoading] = useState(false);
   const [mutate] = useMutation(CREATE_HERO);
   const navigate = useNavigate();
 
   const onSubmit: SubmitHandler<GodFormData> = async (data) => {
+    setLoading(true);
     const result = await mutate({
       variables: data,
     });
+    setLoading(false);
     navigate(`/gods/${result.data.addGod.id}`);
   };
 
   return {
+    loading,
     onSubmit,
   };
 }

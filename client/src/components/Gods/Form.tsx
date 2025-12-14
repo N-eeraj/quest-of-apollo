@@ -12,10 +12,11 @@ import DeleteOutlineRounded from "@mui/icons-material/DeleteOutlineRounded";
 
 interface Props {
   defaultData?: DefaultValues;
+  isSubmitting?: boolean;
   onSubmit: SubmitHandler<DefaultValues>;
 }
 
-function GodForm({ defaultData, onSubmit }: Props) {
+function GodForm({ defaultData, isSubmitting, onSubmit }: Props) {
   const {
     register,
     handleSubmit,
@@ -114,6 +115,7 @@ function GodForm({ defaultData, onSubmit }: Props) {
         <Button
           type="submit"
           variant="contained"
+          loading={isSubmitting}
           disableRipple
           disableElevation
           sx={{

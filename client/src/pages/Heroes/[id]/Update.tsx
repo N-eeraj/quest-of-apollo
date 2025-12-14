@@ -10,6 +10,7 @@ function UpdateHero() {
   } = useHero();
 
   const {
+    loading: isSubmitting,
     onSubmit,
   } = useHeroUpdate();
 
@@ -19,6 +20,7 @@ function UpdateHero() {
       {data && (
         <HeroForm
           defaultData={data.hero}
+          isSubmitting={isSubmitting}
           onSubmit={formData => onSubmit({ ...formData, id: data.hero.id })} />
       )}
     </>

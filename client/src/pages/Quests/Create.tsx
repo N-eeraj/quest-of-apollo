@@ -3,12 +3,15 @@ import useQuestCreate from "@hooks/quests/useQuestCreate";
 
 function CreateQuest() {
   const {
+    loading: isSubmitting,
     onSubmit,
   } = useQuestCreate();
 
   return (
     <>
-      <QuestForm onSubmit={onSubmit} />
+      <QuestForm
+        isSubmitting={isSubmitting}
+        onSubmit={onSubmit} />
     </>
   )
 }

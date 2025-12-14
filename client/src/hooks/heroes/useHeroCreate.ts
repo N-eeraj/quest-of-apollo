@@ -1,4 +1,5 @@
 import {
+  useState,
   gql,
   useMutation,
   useNavigate,
@@ -15,17 +16,21 @@ const CREATE_HERO = gql`
 `;
 
 export default function useHeroCreate() {
+  const [loading, setLoading] = useState(false);
   const [mutate] = useMutation(CREATE_HERO);
   const navigate = useNavigate();
 
   const onSubmit: SubmitHandler<HeroFormData> = async (data) => {
+    setLoading(true);
     const result = await mutate({
       variables: data,
     });
+    setLoading(false);
     navigate(`/heroes/${result.data.addHero.id}`);
   };
 
   return {
+    loading,
     onSubmit,
   };
 }

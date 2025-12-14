@@ -10,13 +10,14 @@ import useHeroForm, {
 
 interface Props {
   defaultData?: DefaultValues;
+  isSubmitting?: boolean;
   onSubmit: SubmitHandler<{
     name: string;
     city: string;
 }>
 }
 
-function HeroForm({ defaultData, onSubmit }: Props) {
+function HeroForm({ defaultData, isSubmitting, onSubmit }: Props) {
   const {
     register,
     handleSubmit,
@@ -78,6 +79,7 @@ function HeroForm({ defaultData, onSubmit }: Props) {
         <Button
           type="submit"
           variant="contained"
+          loading={isSubmitting}
           disableRipple
           disableElevation
           sx={{

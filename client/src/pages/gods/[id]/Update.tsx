@@ -10,6 +10,7 @@ function UpdateGod() {
   } = useGod();
 
   const {
+    loading: isSubmitting,
     onSubmit,
   } = useGodUpdate();
 
@@ -19,6 +20,7 @@ function UpdateGod() {
       {data && (
         <GodForm
           defaultData={data.god}
+          isSubmitting={isSubmitting}
           onSubmit={formData => onSubmit({ ...formData, id: data.god.id })} />
       )}
     </>

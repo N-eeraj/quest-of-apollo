@@ -3,12 +3,15 @@ import useHeroCreate from "@hooks/heroes/useHeroCreate";
 
 function CreateHero() {
   const {
+    loading: isSubmitting,
     onSubmit,
   } = useHeroCreate();
 
   return (
     <>
-      <HeroForm onSubmit={onSubmit} />
+      <HeroForm
+        isSubmitting={isSubmitting}
+        onSubmit={onSubmit} />
     </>
   )
 }

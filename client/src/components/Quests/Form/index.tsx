@@ -20,10 +20,11 @@ import { LinearProgress } from "@mui/material";
 
 interface Props {
   defaultData?: DefaultValues;
+  isSubmitting?: boolean;
   onSubmit: SubmitHandler<DefaultValues>;
 }
 
-function QuestForm({ defaultData, onSubmit }: Props) {
+function QuestForm({ defaultData, isSubmitting, onSubmit }: Props) {
   const {
     register,
     handleSubmit,
@@ -168,6 +169,7 @@ function QuestForm({ defaultData, onSubmit }: Props) {
         <Button
           type="submit"
           variant="contained"
+          loading={isSubmitting}
           disableRipple
           disableElevation
           sx={{

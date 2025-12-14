@@ -3,12 +3,15 @@ import useGodCreate from "@hooks/gods/useGodCreate";
 
 function CreateGod() {
   const {
+    loading: isSubmitting,
     onSubmit,
   } = useGodCreate();
 
   return (
     <>
-      <GodForm onSubmit={onSubmit} />
+      <GodForm
+        isSubmitting={isSubmitting}
+        onSubmit={onSubmit} />
     </>
   )
 }

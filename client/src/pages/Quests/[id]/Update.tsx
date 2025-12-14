@@ -11,6 +11,7 @@ function UpdateQuest() {
   } = useQuest();
 
   const {
+    loading: isSubmitting,
     onSubmit,
   } = useQuestUpdate();
 
@@ -36,6 +37,7 @@ function UpdateQuest() {
       {data && (
         <QuestForm
           defaultData={getDefaultValues()}
+          isSubmitting={isSubmitting}
           onSubmit={formData => onSubmit({ ...formData, id: data.quest.id })} />
       )}
     </>

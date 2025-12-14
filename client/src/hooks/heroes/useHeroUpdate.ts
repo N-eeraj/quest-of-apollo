@@ -1,4 +1,5 @@
 import {
+  useState,
   gql,
   useMutation,
   useNavigate,
@@ -16,17 +17,21 @@ const UPDATE_HERO = gql`
 `;
 
 export default function useHeroUpdate() {
+  const [loading, setLoading] = useState(false);
   const [mutate] = useMutation(UPDATE_HERO);
   const navigate = useNavigate();
 
   const onSubmit: SubmitHandler<HeroFormData & { id: Hero["id"] }> = async (data) => {
+    setLoading(true);
     const result = await mutate({
       variables: data,
     });
+    setLoading(false);
     navigate(`/heroes/${result.data.updateHero.id}`);
   };
 
   return {
+    loading,
     onSubmit,
   };
 }
