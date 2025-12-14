@@ -1,6 +1,44 @@
+import LinearProgress from "@mui/material/LinearProgress";
+import QuestForm from "@components/Quests/Form";
+import useQuest from "@hooks/quests/useQuest";
+import useQuestUpdate from "@hooks/quests/useQuestUpdate";
+import type { PropsOf } from "@emotion/react";
+
 function UpdateQuest() {
+  const {
+    loading,
+    data,
+  } = useQuest();
+
+  const {
+    onSubmit,
+  } = useQuestUpdate();
+
+  const getDefaultValues = (): PropsOf<typeof QuestForm>["defaultData"] => {
+    if (data) {
+      const {
+        title,
+        status,
+        hero,
+      } = data.quest
+
+      return {
+        title,
+        status,
+        heroId: hero.id,
+      }
+    }
+  }
+
   return (
-  <div>UpdateQuest</div>
+    <>
+      {loading && <LinearProgress color="secondary" />}
+      {data && (
+        <QuestForm
+          defaultData={getDefaultValues()}
+          onSubmit={formData => onSubmit({ ...formData, id: data.quest.id })} />
+      )}
+    </>
   )
 }
 

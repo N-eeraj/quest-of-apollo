@@ -7,6 +7,7 @@ import type { Quest } from "@/types";
 const GET_QUEST = gql`
   query Quest($id: ID!) {
     quest(id: $id) {
+      id
       title
       status
       hero {

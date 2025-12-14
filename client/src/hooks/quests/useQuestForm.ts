@@ -34,7 +34,7 @@ const GET_HERO_LIST = gql`
 `;
 
 export type QuestFormData = z.infer<typeof questFormSchema>;
-export type DefaultValues = Pick<Quest, "title" | "status" > | { heroId: Quest["hero"]["id"] };
+export type DefaultValues = Pick<Quest, "title" | "status" > & { heroId: Quest["hero"]["id"] };
 
 export const statusItems = Object.values(Status)
   .map(status => ({
@@ -52,6 +52,7 @@ export default function useQuestForm(defaultValues?: DefaultValues) {
     register,
     handleSubmit,
     formState: { errors },
+    control,
   } = useForm<QuestFormData>({
     resolver: zodResolver(questFormSchema),
     defaultValues,
@@ -61,6 +62,7 @@ export default function useQuestForm(defaultValues?: DefaultValues) {
     register,
     handleSubmit,
     errors,
+    control,
     loadingHeroes,
     heroes: heroes?.heroes ?? [],
   }

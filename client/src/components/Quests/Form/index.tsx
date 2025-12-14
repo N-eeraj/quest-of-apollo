@@ -7,6 +7,7 @@ import {
   MenuItem,
   InputLabel,
   FormHelperText,
+  Controller,
   type SubmitHandler,
 } from "@barrels/form/ui"
 import StatusSelection from "@components/Quests/Form/Status/Selection";
@@ -27,6 +28,7 @@ function QuestForm({ defaultData, onSubmit }: Props) {
     register,
     handleSubmit,
     errors,
+    control,
     loadingHeroes,
     heroes,
   } = useQuestForm(defaultData);
@@ -72,35 +74,41 @@ function QuestForm({ defaultData, onSubmit }: Props) {
           <InputLabel size="small">
             Select status
           </InputLabel>
-          <Select
-            label="Select status"
-            error={!!errors.status}
-            fullWidth
-            size="small"
-            renderValue={(selection) => <StatusSelection status={selection as Quest["status"]} />}
-            {...register("status")}
-          >
-            {statusItems.map(({ value, text, Icon, color }) => (
-              <MenuItem
-                key={value}
-                value={value}
-                sx={{
-                  display: "flex",
-                  columnGap: 0.5,
-                }}>
-                {Icon && (
-                  <Icon
-                    fontSize="small"
+          <Controller
+            name="status"
+            control={control}
+            render={({ field }) => (
+              <Select
+                {...field}
+                label="Select status"
+                error={!!errors.status}
+                fullWidth
+                size="small"
+                renderValue={(selection) => <StatusSelection status={selection as Quest["status"]} />}
+              >
+                {statusItems.map(({ value, text, Icon, color }) => (
+                  <MenuItem
+                    key={value}
+                    value={value}
                     sx={{
-                      color,
-                    }} />
-                )}
-                <span>
-                  {text}
-                </span>
-              </MenuItem>
-            ))}
-          </Select>
+                      display: "flex",
+                      columnGap: 0.5,
+                    }}>
+                    {Icon && (
+                      <Icon
+                        fontSize="small"
+                        sx={{
+                          color,
+                        }} />
+                    )}
+                    <span>
+                      {text}
+                    </span>
+                  </MenuItem>
+                ))}
+              </Select>
+            )}
+          />
           {errors.status?.message && (
             <FormHelperText error>
               {errors.status.message}
@@ -120,26 +128,26 @@ function QuestForm({ defaultData, onSubmit }: Props) {
           <InputLabel size="small">
             Select hero
           </InputLabel>
-          <Select
-            label="Select hero"
-            disabled={loadingHeroes}
-            error={!!errors.heroId}
-            fullWidth
-            size="small"
-            {...register("heroId")}
-          >
-            {heroes?.map(({ id, name }) => (
-              <MenuItem
-                key={id}
-                value={id}
-                sx={{
-                  display: "flex",
-                  columnGap: 0.5,
-                }}>
-                {name}
-              </MenuItem>
-            ))}
-          </Select>
+          <Controller
+            name="heroId"
+            control={control}
+            render={({ field }) => (
+              <Select
+                {...field}
+                label="Select hero"
+                disabled={loadingHeroes}
+                fullWidth
+                size="small"
+                value={field.value ?? ""}
+              >
+                {heroes?.map(({ id, name }) => (
+                  <MenuItem key={id} value={id}>
+                    {name}
+                  </MenuItem>
+                ))}
+              </Select>
+            )}
+          />
           {loadingHeroes && (
             <LinearProgress />
           )}

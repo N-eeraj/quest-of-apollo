@@ -6,4 +6,7 @@ export { default as Select } from "@mui/material/Select";
 export { default as MenuItem } from "@mui/material/MenuItem";
 export { default as InputLabel } from "@mui/material/InputLabel";
 export { default as FormHelperText } from "@mui/material/FormHelperText";
-export type { SubmitHandler } from "react-hook-form";
+export {
+  Controller,
+  type SubmitHandler,
+} from "react-hook-form";
