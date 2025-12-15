@@ -29,7 +29,7 @@ function UpdateQuest() {
         heroId: hero.id,
       }
     };
-  }
+  };
 
   return (
     <>
