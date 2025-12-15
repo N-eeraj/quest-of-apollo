@@ -7,7 +7,7 @@ import {
 } from "@barrels/form/hook";
 import { type QuestFormData } from "@hooks/quests/useQuestForm";
 
-const CREATE_HERO = gql`
+const CREATE_QUEST = gql`
   mutation Mutation($title: String!, $status: String!, $heroId: ID!) {
     addQuest(title: $title, status: $status, heroId: $heroId) {
       id
@@ -17,7 +17,7 @@ const CREATE_HERO = gql`
 
 export default function useQuestCreate() {
   const [loading, setLoading] = useState(false);
-  const [mutate] = useMutation(CREATE_HERO);
+  const [mutate] = useMutation(CREATE_QUEST);
   const navigate = useNavigate();
 
   const onSubmit: SubmitHandler<QuestFormData> = async (data) => {

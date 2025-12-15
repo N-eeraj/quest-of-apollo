@@ -5,6 +5,7 @@ import {
 } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+import { fromNameIdToTextValue } from "@/utils";
 import {
   Status,
   type Quest,
@@ -64,10 +65,6 @@ export default function useQuestForm(defaultValues?: DefaultValues) {
     errors,
     control,
     loadingHeroes,
-    heroes: (heroes?.heroes ?? [])
-      .map(({ id, name }) => ({
-        value: id,
-        text: name,
-      })),
+    heroes: fromNameIdToTextValue(heroes?.heroes),
   };
 }

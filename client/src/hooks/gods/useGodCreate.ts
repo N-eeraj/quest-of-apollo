@@ -7,7 +7,7 @@ import {
 } from "@barrels/form/hook";
 import { type GodFormData } from "@hooks/gods/useGodForm";
 
-const CREATE_HERO = gql`
+const CREATE_GOD = gql`
   mutation Mutation($name: String!, $domains: [String!]!) {
     addGod(name: $name, domains: $domains) {
       id
@@ -17,7 +17,7 @@ const CREATE_HERO = gql`
 
 export default function useGodCreate() {
   const [loading, setLoading] = useState(false);
-  const [mutate] = useMutation(CREATE_HERO);
+  const [mutate] = useMutation(CREATE_GOD);
   const navigate = useNavigate();
 
   const onSubmit: SubmitHandler<GodFormData> = async (data) => {
