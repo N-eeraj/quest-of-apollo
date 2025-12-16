@@ -1,13 +1,5 @@
-import { useState } from "react";
-import {
-  useParams,
-  useNavigate,
-} from "react-router";
 import { gql } from "@apollo/client";
-import {
-  useQuery,
-  useMutation,
-} from "@apollo/client/react";
+import useView from "@hooks/useView";
 import type { Hero } from "@/types";
 
 const GET_HERO = gql`
@@ -43,38 +35,20 @@ const DELETE_HERO = gql`
 
 export default function useHero() {
   const {
-    id,
-  } = useParams<{ id: string }>();
-  const navigate = useNavigate();
-
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  const {
-    loading,
     data,
-  } = useQuery<{ hero: Hero }>(GET_HERO, {
-    variables: {
-      id,
-    },
-  });
-
-  const [mutate] = useMutation(DELETE_HERO, {
-    variables: {
-      id,
-    }
-  });
-
-  const deleteHero = async () => {
-    setIsDeleting(true);
-    await mutate();
-    navigate("/heroes");
-    setIsDeleting(false);
-  }
+    loading,
+    isDeleting,
+    deleteResource,
+  } = useView<{ hero: Hero }>(
+    GET_HERO,
+    DELETE_HERO,
+    "/heroes"
+  );
 
   return {
     loading,
     data,
     isDeleting,
-    deleteHero,
+    deleteHero: deleteResource,
   };
 }

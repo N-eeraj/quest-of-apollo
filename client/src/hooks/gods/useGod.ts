@@ -1,13 +1,5 @@
-import { useState } from "react";
-import {
-  useParams,
-  useNavigate,
-} from "react-router";
 import { gql } from "@apollo/client";
-import {
-  useQuery,
-  useMutation,
-} from "@apollo/client/react";
+import useView from "@hooks/useView";
 import type { God } from "@/types";
 
 const GET_GOD = gql`
@@ -38,39 +30,20 @@ const DELETE_GOD = gql`
 
 export default function useGod() {
   const {
-    id,
-  } = useParams<{ id: string }>();
-  const navigate = useNavigate();
-
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  const {
-    loading,
     data,
-  } = useQuery<{ god: God }>(GET_GOD, {
-    variables: {
-      id,
-    },
-  });
-
-  const [mutate] = useMutation(DELETE_GOD, {
-    variables: {
-      id,
-    }
-  });
-
-  const deleteGod = async () => {
-    setIsDeleting(true);
-    await mutate();
-    navigate("/gods");
-    setIsDeleting(false);
-  }
-
+    loading,
+    isDeleting,
+    deleteResource,
+  } = useView<{ god: God }>(
+    GET_GOD,
+    DELETE_GOD,
+    "/gods"
+  );
 
   return {
     loading,
     data,
     isDeleting,
-    deleteGod,
+    deleteGod: deleteResource,
   };
 }

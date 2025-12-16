@@ -1,13 +1,5 @@
-import { useState } from "react";
-import {
-  useParams,
-  useNavigate,
-} from "react-router";
 import { gql } from "@apollo/client";
-import {
-  useQuery,
-  useMutation,
-} from "@apollo/client/react";
+import useView from "@hooks/useView";
 import { STATUS_DISPLAY_MAP } from "@/constants";
 import type { Quest } from "@/types";
 
@@ -35,33 +27,15 @@ const DELETE_QUEST = gql`
 
 export default function useQuest() {
   const {
-    id,
-  } = useParams<{ id: string }>();
-  const navigate = useNavigate();
-
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  const {
-    loading,
     data,
-  } = useQuery<{ quest: Quest }>(GET_QUEST, {
-    variables: {
-      id,
-    },
-  });
-
-  const [mutate] = useMutation(DELETE_QUEST, {
-    variables: {
-      id,
-    }
-  });
-
-  const deleteQuest = async () => {
-    setIsDeleting(true);
-    await mutate();
-    navigate("/quests");
-    setIsDeleting(false);
-  }
+    loading,
+    isDeleting,
+    deleteResource,
+  } = useView<{ quest: Quest }>(
+    GET_QUEST,
+    DELETE_QUEST,
+    "/quests"
+  );
 
   const questStatus = STATUS_DISPLAY_MAP.get(data?.quest.status!);
 
@@ -70,6 +44,6 @@ export default function useQuest() {
     data,
     questStatus,
     isDeleting,
-    deleteQuest,
+    deleteQuest: deleteResource,
   };
 }
