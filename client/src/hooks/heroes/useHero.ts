@@ -1,8 +1,13 @@
+import { useState } from "react";
 import {
   useParams,
+  useNavigate,
 } from "react-router";
 import { gql } from "@apollo/client";
-import { useQuery } from "@apollo/client/react";
+import {
+  useQuery,
+  useMutation,
+} from "@apollo/client/react";
 import type { Hero } from "@/types";
 
 const GET_HERO = gql`
@@ -28,10 +33,21 @@ const GET_HERO = gql`
   }
 `;
 
+const DELETE_HERO = gql`
+  mutation Mutation($id: ID!) {
+    deleteHero(id: $id) {
+      id
+    }
+  }
+`;
+
 export default function useHero() {
   const {
     id,
   } = useParams<{ id: string }>();
+  const navigate = useNavigate();
+
+  const [isDeleting, setIsDeleting] = useState(false);
 
   const {
     loading,
@@ -42,8 +58,23 @@ export default function useHero() {
     },
   });
 
+  const [mutate] = useMutation(DELETE_HERO, {
+    variables: {
+      id,
+    }
+  });
+
+  const deleteHero = async () => {
+    setIsDeleting(true);
+    await mutate();
+    navigate("/heroes");
+    setIsDeleting(false);
+  }
+
   return {
     loading,
     data,
+    deleteHero,
+    isDeleting,
   };
 }

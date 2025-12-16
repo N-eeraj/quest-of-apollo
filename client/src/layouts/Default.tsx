@@ -24,6 +24,7 @@ function DefaultLayout() {
         <Navbar />
         <Box
           component="main"
+          position="relative"
           paddingTop={{
             xs: 8,
             sm: 10,

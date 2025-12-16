@@ -4,6 +4,7 @@ import {
   LinearProgress,
   Typography,
   EditFab,
+  Delete,
 } from "@barrels/view";
 import QuestsList from "@components/Quests/List";
 import useHero from "@hooks/heroes/useHero";
@@ -12,6 +13,8 @@ function Hero() {
   const {
     loading,
     data,
+    isDeleting,
+    deleteHero,
   } = useHero();
 
   return (
@@ -50,54 +53,61 @@ function Hero() {
               </Typography>
             </Typography>
 
-            <Stack rowGap={{
-              sm: "2px",
-            }}>
-              <Typography
-                variant="h5"
-                component="h3">
-                Relations
-              </Typography>
-              <Stack
-                component="ul"
-                sx={{
-                  listStyle: "none",
-                }}>
-                {data.hero.relations.map(({ id, god, relation }) => (
-                  <Typography
-                    key={id}
-                    component="li">
-                    {relation}:&nbsp;
+            {!!data.hero.relations.length && (
+              <Stack rowGap={{
+                sm: "2px",
+              }}>
+                <Typography
+                  variant="h5"
+                  component="h3">
+                  Relations
+                </Typography>
+                <Stack
+                  component="ul"
+                  sx={{
+                    listStyle: "none",
+                  }}>
+                  {data.hero.relations.map(({ id, god, relation }) => (
                     <Typography
-                      component={Link}
-                      to={`/gods/${god.id}`}
-                      sx={{
-                        textDecoration: "none",
-                        fontWeight: 600,
-                        color: "inherit",
-                        ":hover": {
-                          textDecoration: "underline",
-                        },
-                      }}>
-                      {god.name}
+                      key={id}
+                      component="li">
+                      {relation}:&nbsp;
+                      <Typography
+                        component={Link}
+                        to={`/gods/${god.id}`}
+                        sx={{
+                          textDecoration: "none",
+                          fontWeight: 600,
+                          color: "inherit",
+                          ":hover": {
+                            textDecoration: "underline",
+                          },
+                        }}>
+                        {god.name}
+                      </Typography>
                     </Typography>
-                  </Typography>
-                ))}
+                  ))}
+                </Stack>
               </Stack>
-            </Stack>
+            )}
 
-            <Stack rowGap={{
-              sm: "2px",
-            }}>
-              <Typography
-                variant="h5"
-                component="h3">
-                Quests
-              </Typography>
-              <QuestsList quests={data.hero.quests} />
-            </Stack>
+            {!!data.hero.quests.length && (
+              <Stack rowGap={{
+                sm: "2px",
+              }}>
+                <Typography
+                  variant="h5"
+                  component="h3">
+                  Quests
+                </Typography>
+                <QuestsList quests={data.hero.quests} />
+              </Stack>
+            )}
           </Stack>
 
+          <Delete
+            loading={isDeleting}
+            onClick={deleteHero} />
           <EditFab link={`/heroes/${data.hero.id}/edit`} />
         </>
       )}

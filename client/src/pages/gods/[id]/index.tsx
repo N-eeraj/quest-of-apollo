@@ -64,41 +64,43 @@ function God() {
               </Box>
             </Stack>
 
-            <Stack rowGap={{
-              sm: "2px",
-            }}>
-              <Typography
-                variant="h5"
-                component="h3">
-                Relations
-              </Typography>
-              <Stack
-                component="ul"
-                sx={{
-                  listStyle: "none",
-                }}>
-                {data.god.relations.map(({ id, hero, relation }) => (
-                  <Typography
-                    key={id}
-                    component="li">
-                    {relation} of&nbsp;
+            {!!data.god.relations.length && (
+              <Stack rowGap={{
+                sm: "2px",
+              }}>
+                <Typography
+                  variant="h5"
+                  component="h3">
+                  Relations
+                </Typography>
+                <Stack
+                  component="ul"
+                  sx={{
+                    listStyle: "none",
+                  }}>
+                  {data.god.relations.map(({ id, hero, relation }) => (
                     <Typography
-                      component={Link}
-                      to={`/heroes/${hero.id}`}
-                      sx={{
-                        textDecoration: "none",
-                        fontWeight: 600,
-                        color: "inherit",
-                        ":hover": {
-                          textDecoration: "underline",
-                        },
-                      }}>
-                      {hero.name}
+                      key={id}
+                      component="li">
+                      {relation} of&nbsp;
+                      <Typography
+                        component={Link}
+                        to={`/heroes/${hero.id}`}
+                        sx={{
+                          textDecoration: "none",
+                          fontWeight: 600,
+                          color: "inherit",
+                          ":hover": {
+                            textDecoration: "underline",
+                          },
+                        }}>
+                        {hero.name}
+                      </Typography>
                     </Typography>
-                  </Typography>
-                ))}
+                  ))}
+                </Stack>
               </Stack>
-            </Stack>
+            )}
           </Stack>
 
           <EditFab link={`/gods/${data.god.id}/edit`} />
