@@ -4,6 +4,7 @@ import {
   LinearProgress,
   Typography,
   EditFab,
+  Delete,
 } from "@barrels/view";
 import Box from "@mui/material/Box";
 import useGod from "@hooks/gods/useGod";
@@ -12,6 +13,8 @@ function God() {
   const {
     loading,
     data,
+    isDeleting,
+    deleteGod,
   } = useGod();
 
   return (
@@ -103,6 +106,9 @@ function God() {
             )}
           </Stack>
 
+          <Delete
+            loading={isDeleting}
+            onClick={deleteGod} />
           <EditFab link={`/gods/${data.god.id}/edit`} />
         </>
       )}

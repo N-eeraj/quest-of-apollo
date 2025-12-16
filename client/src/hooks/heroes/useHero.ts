@@ -74,7 +74,7 @@ export default function useHero() {
   return {
     loading,
     data,
-    deleteHero,
     isDeleting,
+    deleteHero,
   };
 }

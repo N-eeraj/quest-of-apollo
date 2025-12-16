@@ -4,6 +4,7 @@ import {
   LinearProgress,
   Typography,
   EditFab,
+  Delete,
 } from "@barrels/view";
 import useQuest from "@hooks/quests/useQuest";
 
@@ -12,6 +13,8 @@ function Quest() {
     loading,
     data,
     questStatus,
+    isDeleting,
+    deleteQuest,
   } = useQuest();
 
   return (
@@ -38,7 +41,8 @@ function Quest() {
               <Typography
                 variant="h4"
                 component="h1"
-                fontWeight={700}>
+                fontWeight={700}
+                marginRight="auto">
                 {data.quest.title}
               </Typography>
               {questStatus && (
@@ -58,6 +62,10 @@ function Quest() {
                   <questStatus.Icon />
                 </Stack>
               )}
+              <Delete
+                loading={isDeleting}
+                onClick={deleteQuest}
+                fixed={false} />
             </Stack>
 
             <Typography

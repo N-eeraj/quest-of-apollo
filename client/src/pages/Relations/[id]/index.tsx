@@ -4,6 +4,7 @@ import {
   LinearProgress,
   Typography,
   EditFab,
+  Delete,
 } from "@barrels/view";
 import useRelation from "@hooks/relations/useRelation";
 
@@ -11,6 +12,8 @@ function Relation() {
   const {
     loading,
     data,
+    isDeleting,
+    deleteRelation,
   } = useRelation();
 
   return (
@@ -89,6 +92,9 @@ function Relation() {
             </Typography>
           </Stack>
 
+          <Delete
+            loading={isDeleting}
+            onClick={deleteRelation} />
           <EditFab link={`/relations/${data.relation.id}/edit`} />
         </>
       )}

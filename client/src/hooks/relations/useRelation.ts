@@ -1,8 +1,13 @@
+import { useState } from "react";
 import {
   useParams,
+  useNavigate,
 } from "react-router";
 import { gql } from "@apollo/client";
-import { useQuery } from "@apollo/client/react";
+import {
+  useQuery,
+  useMutation,
+} from "@apollo/client/react";
 import type { Relation } from "@/types";
 
 const GET_RELATION = gql`
@@ -22,10 +27,21 @@ const GET_RELATION = gql`
   }
 `;
 
+const DELETE_RELATION = gql`
+  mutation Mutation($id: ID!) {
+    deleteRelation(id: $id) {
+      id
+    }
+  }
+`;
+
 export default function useRelation() {
   const {
     id,
   } = useParams<{ id: string }>();
+  const navigate = useNavigate();
+
+  const [isDeleting, setIsDeleting] = useState(false);
 
   const {
     loading,
@@ -36,8 +52,23 @@ export default function useRelation() {
     },
   });
 
+  const [mutate] = useMutation(DELETE_RELATION, {
+    variables: {
+      id,
+    }
+  });
+
+  const deleteRelation = async () => {
+    setIsDeleting(true);
+    await mutate();
+    navigate("/relations");
+    setIsDeleting(false);
+  }
+
   return {
     loading,
     data,
+    isDeleting,
+    deleteRelation,
   };
 }
