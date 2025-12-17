@@ -4,7 +4,7 @@ import {
   FormSelect,
   SubmitButton,
   type SubmitHandler,
-} from "@barrels/form/ui"
+} from "@barrels/form"
 import StatusOption from "@components/Quests/Form/Status/Option";
 import StatusSelection from "@components/Quests/Form/Status/Selection";
 import useQuestForm, {

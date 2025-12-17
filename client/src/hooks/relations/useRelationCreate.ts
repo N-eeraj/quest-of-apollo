@@ -1,10 +1,5 @@
-import {
-  useState,
-  gql,
-  useMutation,
-  useNavigate,
-  type SubmitHandler,
-} from "@barrels/form/hook";
+import { gql } from "@apollo/client";
+import useForm from "@hooks/useForm";
 import { type RelationFormData } from "@hooks/relations/useRelationForm";
 
 const CREATE_RELATION = gql`
@@ -16,18 +11,14 @@ const CREATE_RELATION = gql`
 `;
 
 export default function useRelationCreate() {
-  const [loading, setLoading] = useState(false);
-  const [mutate] = useMutation(CREATE_RELATION);
-  const navigate = useNavigate();
-
-  const onSubmit: SubmitHandler<RelationFormData> = async (data) => {
-    setLoading(true);
-    const result = await mutate({
-      variables: data,
-    });
-    setLoading(false);
-    navigate(`/relations/${result.data.addRelation.id}`);
-  };
+  const {
+    loading,
+    onSubmit,
+  } = useForm<RelationFormData>(
+    CREATE_RELATION,
+    "addRelation",
+    "/relations"
+  );
 
   return {
     loading,

@@ -1,10 +1,5 @@
-import {
-  useState,
-  gql,
-  useMutation,
-  useNavigate,
-  type SubmitHandler,
-} from "@barrels/form/hook";
+import { gql } from "@apollo/client";
+import useForm from "@hooks/useForm";
 import { type HeroFormData } from "@hooks/heroes/useHeroForm";
 
 const CREATE_HERO = gql`
@@ -16,18 +11,14 @@ const CREATE_HERO = gql`
 `;
 
 export default function useHeroCreate() {
-  const [loading, setLoading] = useState(false);
-  const [mutate] = useMutation(CREATE_HERO);
-  const navigate = useNavigate();
-
-  const onSubmit: SubmitHandler<HeroFormData> = async (data) => {
-    setLoading(true);
-    const result = await mutate({
-      variables: data,
-    });
-    setLoading(false);
-    navigate(`/heroes/${result.data.addHero.id}`);
-  };
+  const {
+    loading,
+    onSubmit,
+  } = useForm<HeroFormData>(
+    CREATE_HERO,
+    "addHero",
+    "/heroes"
+  );
 
   return {
     loading,

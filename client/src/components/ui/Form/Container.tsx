@@ -1,7 +1,7 @@
 import {
   Grid,
   type SubmitHandler,
-} from "@barrels/form/ui"
+} from "@barrels/form"
 import type { PropsWithChildren } from "react";
 
 export interface Props extends PropsWithChildren {

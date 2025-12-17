@@ -7,7 +7,7 @@ import {
   MenuItem,
   FormHelperText,
   LinearProgress,
-} from "@barrels/form/ui";
+} from "@barrels/form";
 import {
   type SelectProps,
 } from "@mui/material";

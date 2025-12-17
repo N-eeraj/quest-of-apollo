@@ -3,7 +3,7 @@ import {
   FormTextField,
   SubmitButton,
   type SubmitHandler,
-} from "@barrels/form/ui"
+} from "@barrels/form"
 import Domains from "@components/Gods/Form/Domains";
 import useGodForm, {
   type DefaultValues,

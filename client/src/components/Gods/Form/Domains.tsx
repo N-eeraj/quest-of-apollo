@@ -3,7 +3,7 @@ import {
   Grid,
   TextField,
   Button,
-} from "@barrels/form/ui"
+} from "@barrels/form"
 import AddRounded from "@mui/icons-material/AddRounded";
 import DeleteOutlineRounded from "@mui/icons-material/DeleteOutlineRounded";
 import type {

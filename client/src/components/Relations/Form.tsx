@@ -4,7 +4,7 @@ import {
   FormSelect,
   SubmitButton,
   type SubmitHandler,
-} from "@barrels/form/ui"
+} from "@barrels/form"
 import useRelationForm, {
   type DefaultValues,
 } from "@hooks/relations/useRelationForm";

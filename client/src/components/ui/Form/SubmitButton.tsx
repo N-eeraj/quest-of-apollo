@@ -1,7 +1,7 @@
 import {
   Grid,
   Button,
-} from "@barrels/form/ui";
+} from "@barrels/form";
 
 export interface Props {
   isSubmitting?: boolean;

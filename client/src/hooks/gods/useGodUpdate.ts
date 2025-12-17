@@ -1,10 +1,5 @@
-import {
-  useState,
-  gql,
-  useMutation,
-  useNavigate,
-  type SubmitHandler,
-} from "@barrels/form/hook";
+import { gql } from "@apollo/client";
+import useForm from "@hooks/useForm";
 import { type GodFormData } from "@hooks/gods/useGodForm";
 import type { God } from "@/types";
 
@@ -17,18 +12,14 @@ const UPDATE_GOD = gql`
 `;
 
 export default function useGodUpdate() {
-  const [loading, setLoading] = useState(false);
-  const [mutate] = useMutation(UPDATE_GOD);
-  const navigate = useNavigate();
-
-  const onSubmit: SubmitHandler<GodFormData & { id: God["id"] }> = async (data) => {
-    setLoading(true);
-    const result = await mutate({
-      variables: data,
-    });
-    setLoading(false);
-    navigate(`/gods/${result.data.updateGod.id}`);
-  };
+  const {
+    loading,
+    onSubmit,
+  } = useForm<GodFormData & { id: God["id"] }>(
+    UPDATE_GOD,
+    "updateGod",
+    "/gods"
+  );
 
   return {
     loading,

@@ -1,7 +1,7 @@
 import {
   Grid,
   TextField,
-} from "@barrels/form/ui";
+} from "@barrels/form";
 import type { TextFieldProps } from "@mui/material";
 
 function FormTextField(props: TextFieldProps) {

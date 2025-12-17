@@ -3,7 +3,7 @@ import {
   FormTextField,
   SubmitButton,
   type SubmitHandler,
-} from "@barrels/form/ui"
+} from "@barrels/form"
 import useHeroForm, {
   type DefaultValues,
 } from "@hooks/heroes/useHeroForm";

@@ -1,10 +1,5 @@
-import {
-  useState,
-  gql,
-  useMutation,
-  useNavigate,
-  type SubmitHandler,
-} from "@barrels/form/hook";
+import { gql } from "@apollo/client";
+import useForm from "@hooks/useForm";
 import { type QuestFormData } from "@hooks/quests/useQuestForm";
 import type { Quest } from "@/types";
 
@@ -17,18 +12,14 @@ const CREATE_QUEST = gql`
 `;
 
 export default function useQuestUpdate() {
-  const [loading, setLoading] = useState(false);
-  const [mutate] = useMutation(CREATE_QUEST);
-  const navigate = useNavigate();
-
-  const onSubmit: SubmitHandler<QuestFormData & { id: Quest["id"] }> = async (data) => {
-    setLoading(true);
-    const result = await mutate({
-      variables: data,
-    });
-    setLoading(false);
-    navigate(`/quests/${result.data.updateQuest.id}`);
-  };
+  const {
+    loading,
+    onSubmit,
+  } = useForm<QuestFormData & { id: Quest["id"] }>(
+    CREATE_QUEST,
+    "updateQuest",
+    "/quests"
+  );
 
   return {
     loading,
