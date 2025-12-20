@@ -37,6 +37,7 @@ export default function useHero() {
   const {
     data,
     loading,
+    refetch,
     isDeleting,
     deleteResource,
   } = useView<{ hero: Hero }>(
@@ -49,6 +50,7 @@ export default function useHero() {
     loading,
     data,
     isDeleting,
+    refetch,
     deleteHero: deleteResource,
   };
 }

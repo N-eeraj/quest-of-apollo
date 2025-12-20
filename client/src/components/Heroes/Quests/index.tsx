@@ -6,9 +6,10 @@ import type { Quest } from "@/types";
 
 interface Props {
   quests: Array<Quest>;
+  onDelete: () => void;
 };
 
-function HeroQuests({ quests }: Props) {
+function HeroQuests({ quests, onDelete }: Props) {
   if (!quests.length) return;
 
   return (
@@ -26,7 +27,7 @@ function HeroQuests({ quests }: Props) {
             component="h3">
             Quests
           </Typography>
-          <DeleteQuests />
+          <DeleteQuests onDelete={onDelete} />
         </Stack>
         <QuestsList quests={quests} />
       </Stack>

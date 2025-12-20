@@ -13,6 +13,7 @@ function Hero() {
   const {
     loading,
     data,
+    refetch,
     isDeleting,
     deleteHero,
   } = useHero();
@@ -91,7 +92,9 @@ function Hero() {
               </Stack>
             )}
 
-            <HeroQuests quests={data.hero.quests} />
+            <HeroQuests
+              quests={data.hero.quests}
+              onDelete={refetch} />
           </Stack>
 
           <Delete

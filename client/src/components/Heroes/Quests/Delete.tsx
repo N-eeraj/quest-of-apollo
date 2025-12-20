@@ -2,13 +2,17 @@ import Button from "@mui/material/Button";
 import ConfirmationDialog from "@components/ui/Dialog";
 import useDeleteHeroQuests from "@hooks/heroes/useDeleteHeroQuests";
 
-function DeleteQuests() {
+interface Props {
+  onDelete: () => void;
+};
+
+function DeleteQuests({ onDelete }: Props) {
   const {
     isDeleting,
     setShowConfirmation,
     showConfirmation,
     handleConfirm,
-  } = useDeleteHeroQuests()
+  } = useDeleteHeroQuests(onDelete)
 
   return (
     <>

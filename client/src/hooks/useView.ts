@@ -24,6 +24,7 @@ export default function useView<Query>(
   const {
     loading,
     data,
+    refetch,
   } = useQuery<Query>(query, {
     variables: {
       id,
@@ -47,6 +48,7 @@ export default function useView<Query>(
   return {
     loading,
     data,
+    refetch,
     isDeleting,
     deleteResource,
   };

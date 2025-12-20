@@ -15,7 +15,7 @@ const DELETE_HERO_QUESTS = gql`
   }
 `;
 
-export default function useDeleteHeroQuests() {
+export default function useDeleteHeroQuests(onDelete: () => void) {
   const {
     id,
   } = useParams<{ id: string }>();
@@ -33,6 +33,7 @@ export default function useDeleteHeroQuests() {
     setShowConfirmation(false);
     await mutate();
     setIsDeleting(false);
+    onDelete()
   }
 
   return {
