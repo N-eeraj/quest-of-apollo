@@ -1,3 +1,4 @@
+import HeroQuests from "@/components/Heroes/Quests";
 import {
   Link,
   Stack,
@@ -6,7 +7,6 @@ import {
   EditFab,
   Delete,
 } from "@barrels/view";
-import QuestsList from "@components/Quests/List";
 import useHero from "@hooks/heroes/useHero";
 
 function Hero() {
@@ -91,18 +91,7 @@ function Hero() {
               </Stack>
             )}
 
-            {!!data.hero.quests.length && (
-              <Stack rowGap={{
-                sm: "2px",
-              }}>
-                <Typography
-                  variant="h5"
-                  component="h3">
-                  Quests
-                </Typography>
-                <QuestsList quests={data.hero.quests} />
-              </Stack>
-            )}
+            <HeroQuests quests={data.hero.quests} />
           </Stack>
 
           <Delete
