@@ -1,6 +1,6 @@
-import HeroQuests from "@/components/Heroes/Quests";
+import HeroQuests from "@components/Heroes/Quests";
+import HeroRelations from "@components/Heroes/Relations";
 import {
-  Link,
   Stack,
   LinearProgress,
   Typography,
@@ -54,43 +54,9 @@ function Hero() {
               </Typography>
             </Typography>
 
-            {!!data.hero.relations.length && (
-              <Stack rowGap={{
-                sm: "2px",
-              }}>
-                <Typography
-                  variant="h5"
-                  component="h3">
-                  Relations
-                </Typography>
-                <Stack
-                  component="ul"
-                  sx={{
-                    listStyle: "none",
-                  }}>
-                  {data.hero.relations.map(({ id, god, relation }) => (
-                    <Typography
-                      key={id}
-                      component="li">
-                      {relation}:&nbsp;
-                      <Typography
-                        component={Link}
-                        to={`/gods/${god.id}`}
-                        sx={{
-                          textDecoration: "none",
-                          fontWeight: 600,
-                          color: "inherit",
-                          ":hover": {
-                            textDecoration: "underline",
-                          },
-                        }}>
-                        {god.name}
-                      </Typography>
-                    </Typography>
-                  ))}
-                </Stack>
-              </Stack>
-            )}
+            <HeroRelations
+              relations={data.hero.relations}
+              onDelete={refetch} />
 
             <HeroQuests
               quests={data.hero.quests}
