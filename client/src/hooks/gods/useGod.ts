@@ -30,10 +30,8 @@ const DELETE_GOD = gql`
 
 export default function useGod() {
   const {
-    data,
-    loading,
-    isDeleting,
     deleteResource,
+    ...view
   } = useView<{ god: God }>(
     GET_GOD,
     DELETE_GOD,
@@ -41,9 +39,7 @@ export default function useGod() {
   );
 
   return {
-    loading,
-    data,
-    isDeleting,
+    ...view,
     deleteGod: deleteResource,
   };
 }

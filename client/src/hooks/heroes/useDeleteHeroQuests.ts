@@ -1,11 +1,6 @@
-import { useState } from "react";
-import {
-  useParams,
-} from "react-router";
+import { useParams } from "react-router";
 import { gql } from "@apollo/client";
-import {
-  useMutation,
-} from "@apollo/client/react";
+import useDeleteConfirmation from "@hooks/useDeleteConfirmation";
 
 const DELETE_HERO_QUESTS = gql`
   mutation Mutation($heroId: ID!) {
@@ -20,26 +15,11 @@ export default function useDeleteHeroQuests(onDelete: () => void) {
     id,
   } = useParams<{ id: string }>();
 
-  const [mutate] = useMutation(DELETE_HERO_QUESTS, {
-    variables: {
+  return useDeleteConfirmation(
+    DELETE_HERO_QUESTS,
+    {
       heroId: id,
-    }
-  });
-
-  const [showConfirmation, setShowConfirmation] = useState(false);
-  const [isDeleting, setIsDeleting] = useState(false)
-  const handleConfirm = async () => {
-    setIsDeleting(true);
-    setShowConfirmation(false);
-    await mutate();
-    setIsDeleting(false);
-    onDelete()
-  }
-
-  return {
-    isDeleting,
-    setShowConfirmation,
-    showConfirmation,
-    handleConfirm,
-  }
+    },
+    onDelete,
+  );
 }

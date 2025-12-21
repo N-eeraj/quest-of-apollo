@@ -35,11 +35,8 @@ const DELETE_HERO = gql`
 
 export default function useHero() {
   const {
-    data,
-    loading,
-    refetch,
-    isDeleting,
     deleteResource,
+    ...view
   } = useView<{ hero: Hero }>(
     GET_HERO,
     DELETE_HERO,
@@ -47,10 +44,7 @@ export default function useHero() {
   );
 
   return {
-    loading,
-    data,
-    isDeleting,
-    refetch,
+    ...view,
     deleteHero: deleteResource,
   };
 }

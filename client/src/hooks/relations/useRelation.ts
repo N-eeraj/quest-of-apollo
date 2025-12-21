@@ -29,10 +29,8 @@ const DELETE_RELATION = gql`
 
 export default function useRelation() {
   const {
-    data,
-    loading,
-    isDeleting,
     deleteResource,
+    ...view
   } = useView<{ relation: Relation }>(
     GET_RELATION,
     DELETE_RELATION,
@@ -40,9 +38,7 @@ export default function useRelation() {
   );
 
   return {
-    loading,
-    data,
-    isDeleting,
+    ...view,
     deleteRelation: deleteResource,
   };
 }

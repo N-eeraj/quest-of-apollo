@@ -27,23 +27,19 @@ const DELETE_QUEST = gql`
 
 export default function useQuest() {
   const {
-    data,
-    loading,
-    isDeleting,
     deleteResource,
+    ...view
   } = useView<{ quest: Quest }>(
     GET_QUEST,
     DELETE_QUEST,
     "/quests"
   );
 
-  const questStatus = STATUS_DISPLAY_MAP.get(data?.quest.status!);
+  const questStatus = STATUS_DISPLAY_MAP.get(view.data?.quest.status!);
 
   return {
-    loading,
-    data,
+    ...view,
     questStatus,
-    isDeleting,
     deleteQuest: deleteResource,
   };
 }

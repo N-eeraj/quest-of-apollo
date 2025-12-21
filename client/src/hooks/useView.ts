@@ -42,7 +42,7 @@ export default function useView<Query>(
     await mutate();
     navigate(listPath);
     setIsDeleting(false);
-  }
+  };
 
 
   return {
