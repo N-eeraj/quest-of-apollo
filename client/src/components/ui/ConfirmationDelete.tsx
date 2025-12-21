@@ -1,19 +1,20 @@
 import Button from "@mui/material/Button";
 import ConfirmationDialog from "@components/ui/Dialog";
-import useDeleteHeroQuests from "@hooks/heroes/useDeleteHeroQuests";
+import type useDeleteConfirmation from "@/hooks/useDeleteConfirmation";
 
-interface Props {
-  onDelete: () => void;
+interface Props extends ReturnType<typeof useDeleteConfirmation> {
+  buttonText: string;
+  description: string;
 };
 
-function DeleteQuests({ onDelete }: Props) {
-  const {
-    isDeleting,
-    setShowConfirmation,
-    showConfirmation,
-    handleConfirm,
-  } = useDeleteHeroQuests(onDelete)
-
+function ConfirmationDelete({
+  buttonText,
+  description,
+  isDeleting,
+  showConfirmation,
+  handleConfirm,
+  setShowConfirmation,
+}: Props) {
   return (
     <>
       <Button
@@ -24,13 +25,13 @@ function DeleteQuests({ onDelete }: Props) {
           textTransform: "none",
         }}
         onClick={() => setShowConfirmation(true)}>
-        Remove All Quests
+        {buttonText}
       </Button>
 
       <ConfirmationDialog
         open={showConfirmation}
         title="Confirm Deletion"
-        description="Are you sure you want to delete all the quests of this hero? This action cannot be undone."
+        description={description}
         slotProps={{
           paper: {
             sx: {
@@ -46,4 +47,4 @@ function DeleteQuests({ onDelete }: Props) {
   )
 }
 
-export default DeleteQuests;
+export default ConfirmationDelete;

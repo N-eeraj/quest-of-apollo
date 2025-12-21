@@ -1,7 +1,8 @@
 import { Link } from "react-router";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import DeleteRelations from "@components/Heroes/Relations/Delete";
+import ConfirmationDelete from "@components/ui/ConfirmationDelete";
+import useDeleteHeroRelations from "@hooks/heroes/useDeleteHeroRelations";
 import type { Hero } from "@/types";
 
 interface Props {
@@ -10,6 +11,7 @@ interface Props {
 };
 
 function HeroRelations({ relations, onDelete }: Props) {
+  const deleteConfirmation = useDeleteHeroRelations(onDelete);
   if (!relations.length) return;
 
   return (
@@ -25,7 +27,11 @@ function HeroRelations({ relations, onDelete }: Props) {
           component="h3">
           Relations
         </Typography>
-        <DeleteRelations onDelete={onDelete} />
+
+        <ConfirmationDelete
+          buttonText="Remove All Relations"
+          description="Are you sure you want to delete all the relations of this hero? This action cannot be undone."
+          {...deleteConfirmation} />
       </Stack>
       <Stack
         component="ul"

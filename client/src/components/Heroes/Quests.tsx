@@ -1,6 +1,7 @@
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import DeleteQuests from "@components/Heroes/Quests/Delete";
+import ConfirmationDelete from "@components/ui/ConfirmationDelete";
+import useDeleteHeroQuests from "@hooks/heroes/useDeleteHeroQuests";
 import QuestsList from "@components/Quests/List";
 import type { Quest } from "@/types";
 
@@ -10,6 +11,7 @@ interface Props {
 };
 
 function HeroQuests({ quests, onDelete }: Props) {
+  const deleteConfirmation = useDeleteHeroQuests(onDelete);
   if (!quests.length) return;
 
   return (
@@ -27,7 +29,11 @@ function HeroQuests({ quests, onDelete }: Props) {
             component="h3">
             Quests
           </Typography>
-          <DeleteQuests onDelete={onDelete} />
+
+          <ConfirmationDelete
+            buttonText="Remove All Quests"
+            description="Are you sure you want to delete all the quests of this hero? This action cannot be undone."
+            {...deleteConfirmation} />
         </Stack>
         <QuestsList quests={quests} />
       </Stack>
