@@ -1,5 +1,4 @@
 import {
-  Link,
   Stack,
   LinearProgress,
   Typography,
@@ -8,6 +7,7 @@ import {
 } from "@barrels/view";
 import Box from "@mui/material/Box";
 import useGod from "@hooks/gods/useGod";
+import GodRelations from "@/components/Gods/Relations";
 
 function God() {
   const {
@@ -15,6 +15,7 @@ function God() {
     data,
     isDeleting,
     deleteGod,
+    refetch,
   } = useGod();
 
   return (
@@ -67,43 +68,9 @@ function God() {
               </Box>
             </Stack>
 
-            {!!data.god.relations.length && (
-              <Stack rowGap={{
-                sm: "2px",
-              }}>
-                <Typography
-                  variant="h5"
-                  component="h3">
-                  Relations
-                </Typography>
-                <Stack
-                  component="ul"
-                  sx={{
-                    listStyle: "none",
-                  }}>
-                  {data.god.relations.map(({ id, hero, relation }) => (
-                    <Typography
-                      key={id}
-                      component="li">
-                      {relation} of&nbsp;
-                      <Typography
-                        component={Link}
-                        to={`/heroes/${hero.id}`}
-                        sx={{
-                          textDecoration: "none",
-                          fontWeight: 600,
-                          color: "inherit",
-                          ":hover": {
-                            textDecoration: "underline",
-                          },
-                        }}>
-                        {hero.name}
-                      </Typography>
-                    </Typography>
-                  ))}
-                </Stack>
-              </Stack>
-            )}
+            <GodRelations
+              relations={data.god.relations}
+              onDelete={refetch} />
           </Stack>
 
           <Delete

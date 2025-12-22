@@ -13,9 +13,9 @@ function Hero() {
   const {
     loading,
     data,
-    refetch,
     isDeleting,
     deleteHero,
+    refetch,
   } = useHero();
 
   return (
